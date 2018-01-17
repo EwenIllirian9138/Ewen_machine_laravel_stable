@@ -37,3 +37,4 @@ Route::get('stocks', function()
 });
 
 Route::get('pieces', 'controller_pieces@list');
+Route::get('boissons', 'DrinkController@listDrink');
