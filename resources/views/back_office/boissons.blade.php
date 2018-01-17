@@ -5,10 +5,11 @@
 @stop
 
 @section('content')
-	<table class="table">
+<div class="table-responsive">
+	<table class="table table-hover">
 		<thead>
         	<tr>
-            	<th scope="col">BOISSONS DISPONIBLES </th>
+            	<th>BOISSONS DISPONIBLES</th>
             </tr>
         </thead>
 		@foreach($boisson as $liste)
@@ -16,18 +17,17 @@
 				<td>{{$liste}}</td> 
             </tr>
         @endforeach
-        <td>
-		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <button type="button" class="btn btn-info btn-block">
-             add              
-            </button>
-            <button type="button" class="btn btn-block">
-             edit
-           	</button>
-            <button type="button" class="btn btn-primary btn-block">
-             remove
-            </button>
-        </div>
-      	</td>
-	</table>
+    </table>
+	<div class="btn-group-vertical" data-toggle="buttons">
+        <button type="button" class="btn btn-info">
+            add              
+        </button>
+        <button type="button" class="btn">
+            edit
+        </button>
+        <button type="button" class="btn btn-primary">
+            remove
+        </button>
+    </div>
+</div>
 @stop
