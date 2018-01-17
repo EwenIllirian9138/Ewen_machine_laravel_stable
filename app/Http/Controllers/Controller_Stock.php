@@ -9,24 +9,34 @@ class Controller_Stock extends Controller
     Function display_stock()
 
     {
-        $Stock_Ingre =array(
-            array('Nom'=>'Cafe','Quantite'=>'20'),
-            array('Nom'=>'Chocolat','Quantite'=>'20'),
-            array('Nom'=>'Lait','Quantite'=>'20'),
-            array('Nom'=>'Sucre','Quantite'=>'20'),
-            array('Nom'=>'Gobelet','Quantite'=>'20'),
-            array('Nom'=>'touillette','Quantite'=>'20'),
-            array('Nom'=>'The','Quantite'=>'20'),
-            array('Nom'=>'Eau','Quantite'=>'20')
+        $i=0;
+        $Stock_Ingre = [
+            'Cafe' => 20,
+            'Chocolat' => 20,
+            'Lait' => 20,
+            'Sucre' => 20,
+            'Gobelet' => 20,
+            'Touillette' => 20,
+            'The' => 20,
+            'Eau' => 20,
+        ];
 
-        );
-        $resultat ="";
-        foreach ($Stock_Ingre as $ligne) {
-            foreach ($ligne as $key => $valeur) {
-                $resultat .= ' : ' . $valeur;
-            }
-        }
-        return view('back_office.stocks', ['resultat'=> $resultat]);
+        return view('back_office.stocks', ['Stock_Ingre' => $Stock_Ingre, 'i' => $i]);
 
     }
 }
+/*public function list()
+    {
+        $i=0;
+        $coin_list = [
+            200 => 10,
+            100 => 7,
+            50 => 15,
+            20 => 23,
+            10 => 2,
+            5 => 5
+        ];
+
+        return view('back_office.pieces', ['coin_list' => $coin_list, 'i' => $i]);
+    }
+*/

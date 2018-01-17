@@ -8,22 +8,22 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Type</th>
-        <th scope="col">Nombre</th>
+        <th scope="col">Ingrédient</th>
+        <th scope="col">Quantité</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($coin_list as $type => $number)
+    @foreach($Stock_Ingre as $type => $resultat)
         <tr>
             <td>{{$i++}}</td>
-            <td>{{$type/100}}€</td>
+            <td>{{$type}}</td>
             <td>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <button type="button" class="btn btn-outline-danger">
                         -
                     </button>
                     <button type="button" class="btn btn-secondary">
-                        {{$number}}
+                        {{$resultat}}
                     </button>
                     <button type="button" class="btn btn-outline-success">
                         +
