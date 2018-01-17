@@ -31,10 +31,11 @@ Route::get('commandes', function()
 {
     return view('back_office.commandes');
 });
-Route::get('stocks', function()
-{
-    return view('back_office.stocks');
-});
 
 Route::get('pieces', 'controller_pieces@list');
+
 Route::get('boissons', 'DrinkController@listDrink');
+
+Route::get('stocks','Controller_Stock@display_stock');
+
+

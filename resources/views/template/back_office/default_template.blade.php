@@ -18,6 +18,5 @@
 <section class="content container">
     @yield('content')
 </section>
-
 </body>
 </html>
