@@ -3,11 +3,11 @@
 <head>
     @include('template.head_fragment')
 </head>
-<body class="container">
+<body>
 
 @include('template.back_office.navbar')
 
-<header class="title">
+<header>
     <div class="content">
         <div class="title m-b-md">
             @yield('titre')
@@ -15,7 +15,7 @@
     </div>
 </header>
 
-<section class="content">
+<section class="content container">
     @yield('content')
 </section>
 

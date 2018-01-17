@@ -6,6 +6,7 @@ class controller_pieces extends Controller
 {
     public function list()
     {
+        $i=0;
         $coin_list = [
             200 => 10,
             100 => 7,
@@ -15,6 +16,7 @@ class controller_pieces extends Controller
             5 => 5
         ];
 
-        return view('back_office.pieces', ['coin_list' => $coin_list]);
+        return view('back_office.pieces', ['coin_list' => $coin_list, 'i' => $i]);
     }
 }
+
