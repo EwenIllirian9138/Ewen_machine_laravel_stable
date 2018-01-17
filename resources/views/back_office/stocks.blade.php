@@ -4,7 +4,7 @@
     Gestion des stocks
 
 @stop
-@section ('content)
+@section ('content')
 <table class="table">
     <thead>
     <tr>
@@ -16,7 +16,7 @@
     <tbody>
     @foreach($stock_ingre as $type => $resultat)
         <tr>
-            <td>{{$id_Ingredient++}}</td>
+            <td>{{$id_ingredients++}}</td>
             <td>{{$type}}</td>
             <td>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
