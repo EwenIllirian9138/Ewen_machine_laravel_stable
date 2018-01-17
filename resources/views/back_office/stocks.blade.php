@@ -14,9 +14,9 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($Stock_Ingre as $type => $resultat)
+    @foreach($stock_ingre as $type => $resultat)
         <tr>
-            <td>{{$i++}}</td>
+            <td>{{$id_Ingredient++}}</td>
             <td>{{$type}}</td>
             <td>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">

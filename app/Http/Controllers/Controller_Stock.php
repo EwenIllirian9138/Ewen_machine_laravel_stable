@@ -9,34 +9,19 @@ class Controller_Stock extends Controller
     Function display_stock()
 
     {
-        $i=0;
-        $Stock_Ingre = [
+        $id_ingredients=0;
+        $stock_ingre = [
             'Cafe' => 20,
-            'Chocolat' => 20,
+            'Chocolat' => 10,
             'Lait' => 20,
-            'Sucre' => 20,
-            'Gobelet' => 20,
-            'Touillette' => 20,
-            'The' => 20,
-            'Eau' => 20,
+            'Sucre' => 15,
+            'Gobelet' => 7,
+            'Touillette' => 5,
+            'The' => 6,
+            'Eau' => 18,
         ];
 
-        return view('back_office.stocks', ['Stock_Ingre' => $Stock_Ingre, 'i' => $i]);
+        return view('back_office.stocks', ['stock_Ingre' => $stock_ingre, 'i' => $id_ingredients]);
 
     }
 }
-/*public function list()
-    {
-        $i=0;
-        $coin_list = [
-            200 => 10,
-            100 => 7,
-            50 => 15,
-            20 => 23,
-            10 => 2,
-            5 => 5
-        ];
-
-        return view('back_office.pieces', ['coin_list' => $coin_list, 'i' => $i]);
-    }
-*/
