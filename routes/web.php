@@ -19,12 +19,6 @@ Route::get('back_office', function()
 {
     return view('back_office.index');
 });
-
-Route::get('recettes', function()
-{
-    return view('back_office.recettes');
-});
-
 Route::get('pieces', 'controller_pieces@list');
 
 Route::get('boissons', 'DrinkController@listDrink');
@@ -33,3 +27,4 @@ Route::get('stocks','Controller_Stock@display_stock');
 
 Route::get('commandes', 'CommandeController@listCommande');
 
+Route::get('recettes','recipesController@recipes');
