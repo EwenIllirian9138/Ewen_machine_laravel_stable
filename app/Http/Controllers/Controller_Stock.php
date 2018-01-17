@@ -21,7 +21,7 @@ class Controller_Stock extends Controller
             'Eau' => 18,
         ];
 
-        return view('back_office.stocks', ['stock_ingre' => $stock_ingre, 'id_ingredients' => $id_ingredientsgit]);
+        return view('back_office.stocks', ['stock_ingre' => $stock_ingre, 'id_ingredients' => $id_ingredients]);
 
     }
 }

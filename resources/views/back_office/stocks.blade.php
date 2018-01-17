@@ -50,7 +50,5 @@
         </form>
     </tfooter>
 </table>
-<<<<<<< HEAD
-=======
 @stop
->>>>>>> stock v4
+
