@@ -4,7 +4,7 @@
     Gestion des recettes
 @stop
 
-@section ('contenu')
+@section ('content')
     <button type="button" class="btn btn-outline-success">Add</button>
     @foreach ($allrecipes as $drink => $ingredients)
         <table class="table">
