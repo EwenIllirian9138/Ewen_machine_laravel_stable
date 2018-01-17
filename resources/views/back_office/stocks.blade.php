@@ -4,6 +4,7 @@
     Gestion des stocks
 
 @stop
+@section ('content)
 <table class="table">
     <thead>
     <tr>
@@ -49,3 +50,7 @@
         </form>
     </tfooter>
 </table>
+<<<<<<< HEAD
+=======
+@stop
+>>>>>>> stock v4
