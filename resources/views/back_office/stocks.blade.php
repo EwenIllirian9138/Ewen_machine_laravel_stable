@@ -3,3 +3,4 @@
 @section('titre')
     Gestion des stocks
 @stop
+

@@ -31,11 +31,9 @@ Route::get('commandes', function()
 {
     return view('back_office.commandes');
 });
-Route::get('pieces', function()
-{
-    return view('back_office.pieces');
-});
 Route::get('stocks', function()
 {
     return view('back_office.stocks');
 });
+
+Route::get('pieces', 'controller_pieces@list');

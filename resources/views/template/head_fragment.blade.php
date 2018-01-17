@@ -13,13 +13,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Ressources -->
-    <link rel="stylesheet" type="text/css" href="styles/vueClient.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/default_template.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/table_style.css') }}">
     <script type="text/javascript" src="scripts/selectDrink.js"></script>
     <script type="text/javascript" src="scripts/monnayeur.js"></script>
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Basic' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <style>
