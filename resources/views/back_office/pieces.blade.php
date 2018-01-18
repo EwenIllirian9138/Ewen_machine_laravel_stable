@@ -19,35 +19,37 @@
                 <td>{{$i++}}</td>
                 <td>{{$type/100}}€</td>
                 <td>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <button type="button" class="btn btn-outline-danger">
+                    <form class="btn-group">
+                        <button type="submit" class="btn btn-outline-danger">
                             -
                         </button>
-                        <button type="button" class="btn btn-secondary">
+                        <div class="btn btn-secondary">
                             {{$number}}
-                        </button>
-                        <button type="button" class="btn btn-outline-success">
+                        </div>
+                        <button type="submit" class="btn btn-outline-success">
                             +
                         </button>
-                    </div>
+                    </form>
                 </td>
             </tr>
         @endforeach
         </tbody>
         <tfooter>
-            <form>
-                <td>
-                    <button type="submit" class="btn btn-outline-success">
-                        add
-                    </button>
-                </td>
-                <td class="form-group">
-                    <input type="text" class="form-control" placeholder="Type">
-                </td>
-                <td class="form-group">
-                    <input type="text" class="form-control" placeholder="Number">
-                </td>
-            </form>
+            <tr>
+                <form>
+                    <td>
+                        <button type="submit" class="btn btn-outline-success">
+                            add
+                        </button>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="Type">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="Number">
+                    </td>
+                </form>
+            </tr>
         </tfooter>
     </table>
 @endsection
