@@ -3,3 +3,9 @@
 @section('titre')
     Gestion des commandes
 @stop
+
+@section('content')
+
+
+
+@stop
