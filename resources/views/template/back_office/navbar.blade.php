@@ -10,42 +10,42 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
 
-            @if(Request::is("boissons"))
+            @if(Request::is("boissons*"))
                 <li class="nav-item active">
             @else
                 <li class="nav-item">
                     @endif
-                    <a class="nav-link" href="boissons">Boissons</a>
+                    <a class="nav-link" href="/boissons">Boissons</a>
                 </li>
-                @if(Request::is("recettes"))
+                @if(Request::is("ingredients*"))
                     <li class="nav-item active">
                 @else
                     <li class="nav-item">
                         @endif
-                        <a class="nav-link" href="recettes">Recettes</a>
+                        <a class="nav-link" href="/ingredients">Ingrédients</a>
                     </li>
-
-                    @if(Request::is("commandes"))
+                    @if(Request::is("recettes"))
                         <li class="nav-item active">
                     @else
                         <li class="nav-item">
                             @endif
-                            <a class="nav-link" href="commandes">Commandes</a>
+                            <a class="nav-link" href="/recettes">Recettes</a>
                         </li>
 
-                        @if(Request::is("pieces"))
+                        @if(Request::is("commandes"))
                             <li class="nav-item active">
                         @else
                             <li class="nav-item">
                                 @endif
-                                <a class="nav-link" href="pieces">Pièces</a>
+                                <a class="nav-link" href="/commandes">Commandes</a>
                             </li>
-                            @if(Request::is("stocks"))
+
+                            @if(Request::is("pieces"))
                                 <li class="nav-item active">
                             @else
                                 <li class="nav-item">
                                     @endif
-                                    <a class="nav-link" href="stocks">Stocks</a>
+                                    <a class="nav-link" href="/pieces">Pièces</a>
                                 </li>
         </ul>
     </div>

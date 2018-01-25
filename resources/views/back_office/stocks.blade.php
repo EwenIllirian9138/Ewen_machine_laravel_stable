@@ -2,8 +2,8 @@
 
 @section('titre')
     Gestion des stocks
-
 @stop
+
 @section ('content')
 <table class="table">
     <thead>

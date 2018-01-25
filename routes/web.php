@@ -11,20 +11,23 @@
 |
 */
 
-Route::get('/', function()
-{
+Route::get('/', function () {
     return view('front_office.preparation');
 });
-Route::get('back_office', function()
-{
+Route::get('back_office', function () {
     return view('back_office.index');
 });
-Route::get('pieces', 'controller_pieces@list');
 
-Route::get('boissons', 'DrinkController@listDrink');
 
-Route::get('stocks','Controller_Stock@display_stock');
+Route::resource('ingredients' , 'IngredientsController', ['except' => ['destroy']]);
+Route::get('/ingredients/{ingredient}/destroy', 'IngredientsController@destroy');
 
-Route::get('commandes', 'CommandeController@listCommande');
+Route::resource('boissons' , 'BoissonsController', ['except' => ['destroy']]);
+Route::get('/boissons/{boisson}/destroy', 'BoissonsController@destroy');
+//
+//Route::get('/boissons/index', 'BoissonsController@index');
+//Route::get('/boissons/create', 'BoissonsController@create');
+//Route::post('/boissons/store', 'BoissonsController@store');
+//Route::get('/boissons/{boisson}/update', 'BoissonsController@update');
+//Route::get('/boissons/{boisson}', 'BoissonsController@show');
 
-Route::get('recettes','recipesController@recipes');
