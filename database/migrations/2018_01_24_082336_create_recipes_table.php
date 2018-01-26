@@ -13,13 +13,14 @@ class CreateRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Recipes', function (Blueprint $table) {
-            $table->integer('boisson_id')->foreign('$boisson_id')->references('id')->on('boisson');
-            $table->integer('ingredient_id')->foreign('ingredient_id')->references('id')->on('ingredient');
+        Schema::create('recipes', function (Blueprint $table) {
+            $table->integer('boisson_id')->index('boisson_id')->foreign('$boisson_id')->references('id')->on('boisson');
+            $table->integer('ingredient_id')->index('ingredient_id')->foreign('ingredient_id')->references('id')->on('ingredient');
             $table->integer('amount');
-            $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
+
 
     /**
      * Reverse the migrations.

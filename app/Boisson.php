@@ -12,9 +12,12 @@ class Boisson extends Model
         return $this->hasMany('App\Sale');
     }
 
+    public function recipes() {
+        return $this->hasMany('App\Recipe');
+    }
+
     public function ingredients() {
         return $this->belongsToMany('App\Ingredient', 'recipes')
-            ->withPivot('amount')
-            ->withTimestamps();
+            ->withPivot('id', 'amount');
     }
 }

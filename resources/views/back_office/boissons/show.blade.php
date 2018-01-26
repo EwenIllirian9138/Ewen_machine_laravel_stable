@@ -24,7 +24,7 @@
         </tr>
     </table>
     <div class="btn-group">
-        <a href="/boissons/{{ $boisson->id }}/destroy" class="btn btn-outline-warning">Delete</a>
+        <a href="/boissons/{{ $boisson->id }}/destroy" class="btn btn-outline-danger">Delete</a>
         <a href="/boissons/{{ $boisson->id }}/edit" type="submit" class="btn btn-outline-success">Edit</a>
         <a href="/boissons" class="btn btn-outline-danger">Return</a>
     </div>
@@ -35,17 +35,42 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Ingredient</th>
+            <th>ID</th>
+            <th>ID/Ingredient</th>
             <th>Amount</th>
+            <th>Details</th>
+            <th>Delete</th>
         </tr>
         </thead>
-        @foreach($boisson->ingredients as $ingredient)
-            <tr>
-                <td>{{ $ingredient->name }}</td>
-                <td>{{ $ingredient->pivot->amount }}</td>
-            </tr>
-        @endforeach
+        @if($boisson->ingredients->isNotEmpty())
+            @foreach($boisson->recipes as $recipe)
+                <tr>
+                    <td>{{ $recipe->id }}</td>
+                    <td>{{ $recipe->ingredient->id }}/{{$recipe->ingredient->name}}</td>
+                    <td>{{ $recipe->amount }}</td>
+                    <td>
+                        <a href="/ingredients/{{ $recipe->ingredient->id }}" class="fa fa-search-plus fa-lg"
+                           aria-hidden="true"></a>
+                    </td>
+                    <td>
+                        <form action="/recipes/{{ $recipe->id }}" method="POST">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button class="btn btn-outline-danger">X</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
     </table>
+    <div class="btn-group">
+        <a href="/recipes/{{ $boisson->id }}/destroy" class="btn btn-outline-danger">Delete All</a>
+        <a href="/recipes/{{ $boisson->id }}/edit" type="submit" class="btn btn-outline-success">Edit
+            Recipe</a>
+    </div>
+    @else
+    </table>
+    <a href="/recipes/create/{{ $boisson->id }}" type="submit" class="btn btn-outline-success">Add</a>
+    @endif
     </br>
     </br>
     <h2>Sales</h2>

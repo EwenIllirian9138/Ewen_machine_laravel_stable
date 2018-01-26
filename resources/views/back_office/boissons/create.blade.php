@@ -1,7 +1,7 @@
 @extends('template.back_office.default_template')
 
 @section('titre')
-    Ajouter une boissons
+    Ajouter une boisson
 @stop
 
 @section('content')

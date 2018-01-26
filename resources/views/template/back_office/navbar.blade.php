@@ -1,14 +1,14 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
 
+    <a class="navbar-brand" href="/">Machine à café</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="/">Machine à café</a>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
 
             @if(Request::is("boissons*"))
                 <li class="nav-item active">
@@ -22,14 +22,14 @@
                 @else
                     <li class="nav-item">
                         @endif
-                        <a class="nav-link" href="/ingredients">Ingrédients</a>
+                        <a class="nav-link" href="/ingredients">Ingredients</a>
                     </li>
-                    @if(Request::is("recettes"))
+                    @if(Request::is("recipes*"))
                         <li class="nav-item active">
                     @else
                         <li class="nav-item">
                             @endif
-                            <a class="nav-link" href="/recettes">Recettes</a>
+                            <a class="nav-link" href="/recipes">Recipes</a>
                         </li>
 
                         @if(Request::is("commandes"))

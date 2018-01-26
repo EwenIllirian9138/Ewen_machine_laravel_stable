@@ -22,8 +22,13 @@ Route::get('back_office', function () {
 Route::resource('ingredients' , 'IngredientsController', ['except' => ['destroy']]);
 Route::get('/ingredients/{ingredient}/destroy', 'IngredientsController@destroy');
 
+
 Route::resource('boissons' , 'BoissonsController', ['except' => ['destroy']]);
 Route::get('/boissons/{boisson}/destroy', 'BoissonsController@destroy');
+
+
+Route::get('/recipes/create/{boisson}', 'RecipesController@createForOne');
+Route::resource('recipes' , 'RecipesController');
 //
 //Route::get('/boissons/index', 'BoissonsController@index');
 //Route::get('/boissons/create', 'BoissonsController@create');

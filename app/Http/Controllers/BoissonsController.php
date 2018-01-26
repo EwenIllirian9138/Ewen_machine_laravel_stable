@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boisson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BoissonsController extends Controller
 {
@@ -16,6 +17,8 @@ class BoissonsController extends Controller
     public function index()
     {
         $boissons = Boisson::all();
+
+        //$boissons = DB::select('SELECT * FROM boissons');
 
         return view('back_office.boissons.index', ['boissons' => $boissons]);
 
@@ -39,8 +42,12 @@ class BoissonsController extends Controller
      */
     public function store(Request $request)
     {
-        Boisson::create(['name' => $request->name, 'price' => $request->price]);
-        return redirect('/boissons');
+        $boisson = Boisson::create(['name' => $request->name, 'price' => $request->price]);
+        // dump($boisson);
+        //DB::insert("INSERT INTO boissons (name, price)
+        //VALUES (:name, :price)", ['name' => $request->name, 'price' => $request->price]);
+
+        return redirect()->action('RecipesController@createForOne', ['boisson' => $boisson]);
     }
 
     /**
@@ -78,6 +85,14 @@ class BoissonsController extends Controller
         $boisson->name = $request->name;
         $boisson->price = $request->price;
         $boisson->save();
+
+//        $boisson = DB::update('
+//          UPDATE boissons
+//          SET name = :name, price = :price
+//          WHERE id = :id',
+//            ['name' => $request->name,
+//             'price' => $request->price,
+//             'id' => $boisson->id]);
 
         return redirect('/boissons');
     }

@@ -23,7 +23,6 @@
             </tr>
         </table>
         <div class="btn-group">
-            <a href="/boissons/{{ $boisson->id }}/destroy" class="btn btn-outline-warning">Delete</a>
             <button type="submit" class="btn btn-outline-success">Update</button>
             <a href="/boissons/{{ $boisson->id }}" class="btn btn-outline-danger">Cancel</a>
         </div>
