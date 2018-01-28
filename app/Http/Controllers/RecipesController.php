@@ -36,10 +36,13 @@ class RecipesController extends Controller
 
         $data = [
             'boissons' => $boissons,
-            'ingredients' => $ingredients
+            'ingredients' => $ingredients,
         ];
-
-        return view('back_office.recipes.create', $data);
+        if ($ingredients->count() <= 0) {
+            return view('back_office.Ingredients.create', $data);
+        } else {
+            return view('back_office.recipes.create', $data);
+        }
     }
 
     public function createForOne(Boisson $boisson)
@@ -58,12 +61,7 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
         $boisson = Boisson::find($request->boisson);
-        foreach ($request->ingredients as $ingredient_index => $ingredient_id) {
-            $ingredient = Ingredient::find($ingredient_id);
-            $amount = $request->amount[$ingredient_index];
-            $boisson->ingredients()->attach($ingredient, ['amount' => $amount]);
-        }
-        return redirect('/boissons/'.$boisson->id);
+
     }
 
     /**
@@ -90,7 +88,7 @@ class RecipesController extends Controller
 
         $data = [
             'boisson' => $boisson,
-            'ingredients' => $ingredients,
+            'all_ingredients' => $ingredients,
         ];
 
         return view('back_office.recipes.edit', $data);
@@ -103,9 +101,49 @@ class RecipesController extends Controller
      * @param  \App\Recipe $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(Request $request, Boisson $recipe)
     {
-        //
+        $boisson = $recipe;
+        unset($recipe);
+
+        $recipe = $request->recipe_id;
+        $ingredients = $request->ingredients;
+        $quantity = $request->quantity;
+
+        $new_ingredients = $request->new_ingredients;
+        $new_quantity = $request->new_quantity;
+
+        if ($recipe && $new_ingredients) {
+            $duplicate_ingredients_id = [];
+            foreach ($new_ingredients as $index => $ingredient_id) {
+                $response = array_search($ingredient_id, $ingredients);
+                if (is_numeric($response)) {
+                    $duplicate_ingredients_id[$index] = $response;
+                }
+            }
+            foreach ($duplicate_ingredients_id as $new_index => $index) {
+                $quantity[$index] += $new_quantity[$new_index];
+                unset($new_quantity[$new_index], $new_ingredients[$new_index]);
+            }
+        }
+
+        if ($recipe) {
+            foreach ($recipe as $index => $recipe_id) {
+                $current_recipe = Recipe::find($recipe_id);
+                $current_recipe->boisson_id = $boisson->id;
+                $current_recipe->ingredient_id = $ingredients[$index];
+                $current_recipe->quantity = $quantity[$index];
+                $current_recipe->save();
+            }
+        }
+
+        if ($new_ingredients) {
+            foreach ($new_ingredients as $index => $ingredient_id) {
+                $ingredient = Ingredient::find($ingredient_id);
+                $boisson->ingredients()->attach($ingredient, ['quantity' => $new_quantity[$index]]);
+            }
+        }
+        return redirect("/recipes/".$boisson->id."/edit");
     }
 
     /**
@@ -118,6 +156,6 @@ class RecipesController extends Controller
     {
         $id_boisson = $recipe->boisson_id;
         $recipe->delete();
-        return redirect("/boissons/".$id_boisson );
+        return redirect("/recipes/".$id_boisson."/edit");
     }
 }

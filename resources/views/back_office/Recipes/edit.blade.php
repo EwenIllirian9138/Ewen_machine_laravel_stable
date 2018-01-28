@@ -5,42 +5,75 @@
 @stop
 
 @section('content')
-    <form method="post" action="/recipes">
+    <form method="post" action="/recipes/{{ $boisson->id }}">
+        {{ method_field('PUT') }}
         {{ csrf_field() }}
         <table class="table">
             <thead>
             <tr>
-                <th><a id="add_line" class="btn btn-outline-success">+</a></th>
-                <th>Ingredient</th>
+                <th>ID</th>
+                <th>ID/Ingredient</th>
                 <th>Quantity</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($boisson->ingredients as $recipe)
-                <tr class="line">
-                    <td>#</td>
+            <tr></tr>
+            @foreach($boisson->ingredients as $ingredient)
+                <tr>
                     <td>
-                        <select name="ingredients[]" class="ingredients form-control" id="exampleFormControlSelect1">
-                            @foreach($ingredients as $ingredient)
-                                @if($ingredient->id == $recipe->pivot->ingredient_id)
-                                    <option value="{{$ingredient->id}}" selected="selected">{{$ingredient->name}}HEHE</option>
-                                @else
-                                    <option value="{{$ingredient->id}}">{{$ingredient->name}}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <input type="hidden" name="recipe_id[]"
+                               value="{{ $ingredient->pivot->id }}">
+                        {{ $ingredient->pivot->id }}
                     </td>
                     <td>
-                        <input type="number" class="form-control" name="amount[]" value="{{$recipe->pivot->amount}}">
+                        <input type="hidden" name="ingredients[]" value="{{ $ingredient->id }}">
+                        {{ $ingredient->id }}/{{ $ingredient->name }}
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="quantity[]"
+                               value="{{$ingredient->pivot->quantity}}">
+                    </td>
+                    <td>
+                        <button type="submit" form="delete{{ $ingredient->pivot->id }}" class="btn btn-outline-danger">
+                            X
+                        </button>
                     </td>
                 </tr>
             @endforeach
             </tbody>
+            <tfoot id="new_ingredients">
+            <tr class="line">
+                <td>
+                    <a href="#" onclick="return false;" id="add_line" class="btn btn-outline-success">+</a>
+                    <a href="#" onclick="return false;" class="remove_line btn btn-outline-danger">-</a>
+                </td>
+                <td>
+                    <select name="new_ingredients[]" class="ingredients form-control">
+                        @foreach($all_ingredients as $all_ingredient)
+                            <option value="{{$all_ingredient->id}}">{{$all_ingredient->name}}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="number" class="form-control" name="new_quantity[]"
+                           placeholder="Quantity...">
+                </td>
+                <td></td>
+            </tr>
+            </tfoot>
         </table>
-        <div class="btn-group">
+            <div class="btn-group">
             <button type="submit" class="btn btn-outline-success">Edit</button>
-            <a href="/recipes" class="btn btn-outline-danger">Cancel</a>
+            <a href="/boissons/{{$boisson->id}}" class="btn btn-outline-danger">Cancel</a>
         </div>
+
     </form>
+    @foreach($boisson->ingredients as $ingredient)
+        <form id='delete{{ $ingredient->pivot->id }}' action="/recipes/{{ $ingredient->pivot->id }}" method="POST">
+            {{ method_field('DELETE') }}
+            {{ csrf_field() }}
+        </form>
+    @endforeach
 
 @endsection

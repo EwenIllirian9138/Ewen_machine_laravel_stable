@@ -37,7 +37,7 @@ class IngredientsController extends Controller
      */
     public function store(Request $request)
     {
-        Ingredient::create(['name' => $request->name, 'amount' => $request->amount]);
+        Ingredient::create(['name' => $request->name, 'stock' => $request->stock]);
         return redirect('/ingredients');
     }
 

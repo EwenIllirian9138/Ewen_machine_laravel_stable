@@ -36,7 +36,7 @@
                     </select>
                 </td>
                 <td>
-                    <input type="number" class="form-control" name="amount[]" placeholder="Quantity...">
+                    <input type="number" class="form-control" name="quantity[]" placeholder="Quantity...">
                 </td>
             </tr>
 

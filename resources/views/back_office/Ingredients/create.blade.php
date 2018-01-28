@@ -12,14 +12,14 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Amount</th>
+                <th>Stock</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>ID</td>
                 <td><input type="text" class="form-control" name="name" placeholder="Name..."></td>
-                <td><input type="number" class="form-control" name="amount" placeholder="Amount..."></td>
+                <td><input type="number" class="form-control" name="stock" placeholder="Stock..."></td>
             </tr>
             </tbody>
         </table>

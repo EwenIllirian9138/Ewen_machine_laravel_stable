@@ -18,13 +18,13 @@
                 <td>
                     <table class="table table-sm">
                         <thead>
-                        @foreach($boisson->recipes as $recipe)
-                            <th>{{$recipe->ingredient->name}}</th>
+                        @foreach($boisson->ingredients as $ingredient)
+                            <th>{{$ingredient->pivot->name}}</th>
                         @endforeach
                         </thead>
                         <tbody>
-                        @foreach($boisson->recipes as $recipe)
-                            <td>{{$recipe->amount}}</td>
+                        @foreach($boisson->ingredients as $ingredient)
+                            <td>{{$ingredient->pivot->amount}}</td>
                         @endforeach
                         </tbody>
                     </table>

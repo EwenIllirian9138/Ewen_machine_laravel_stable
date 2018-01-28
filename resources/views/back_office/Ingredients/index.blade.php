@@ -9,7 +9,7 @@
         <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Amount</th>
+            <th scope="col">Stock</th>
             <th scope="col">Details</th>
         </tr>
         </thead>
@@ -17,7 +17,7 @@
         @foreach($ingredients as $ingredient)
             <tr>
                 <td>{{$ingredient->name}}</td>
-                <td>{{$ingredient->amount}}</td>
+                <td>{{$ingredient->stock}}</td>
                 <td>
                     <a href="/ingredients/{{ $ingredient->id }}" class="fa fa-search-plus fa-lg" aria-hidden="true"></a>
                 </td>

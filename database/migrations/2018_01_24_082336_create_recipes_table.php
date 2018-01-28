@@ -14,9 +14,10 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('boisson_id')->index('boisson_id')->foreign('$boisson_id')->references('id')->on('boisson');
             $table->integer('ingredient_id')->index('ingredient_id')->foreign('ingredient_id')->references('id')->on('ingredient');
-            $table->integer('amount');
+            $table->integer('quantity');
         });
         Schema::enableForeignKeyConstraints();
     }
