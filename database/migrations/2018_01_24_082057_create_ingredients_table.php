@@ -13,7 +13,7 @@ class CreateIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Ingredients', function (Blueprint $table) {
+        Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('stock');
