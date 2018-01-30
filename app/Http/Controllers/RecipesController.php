@@ -21,7 +21,7 @@ class RecipesController extends Controller
             $query->select('ingredients.name', 'ingredients.id');
         }]);
 
-        return view('back_office.recipes.index', ['boissons' => $boissons]);
+        return view('back_office.Recipes.index', ['boissons' => $boissons]);
     }
 
     /**
@@ -41,14 +41,14 @@ class RecipesController extends Controller
         if ($ingredients->count() <= 0) {
             return view('back_office.Ingredients.create', $data);
         } else {
-            return view('back_office.recipes.create', $data);
+            return view('back_office.Recipes.create', $data);
         }
     }
 
     public function createForOne(Boisson $boisson)
     {
         $ingredients = Ingredient::select('name', 'id')->get();
-        return view('back_office.recipes.create',
+        return view('back_office.Recipes.create',
             ['boissons' => $boisson, 'ingredients' => $ingredients, 'ForOne' => true]);
     }
 
@@ -91,7 +91,7 @@ class RecipesController extends Controller
             'all_ingredients' => $ingredients,
         ];
 
-        return view('back_office.recipes.edit', $data);
+        return view('back_office.Recipes.edit', $data);
     }
 
     /**
