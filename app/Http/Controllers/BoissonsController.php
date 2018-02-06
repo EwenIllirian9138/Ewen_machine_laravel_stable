@@ -17,9 +17,36 @@ class BoissonsController extends Controller
     public function index()
     {
         $boissons = Boisson::all();
-        return view('back_office.boissons.index', ['boissons' => $boissons]);
+        $data = [
+            'boissons' => $boissons,
+        ];
+        return view('back_office.boissons.index', $data);
     }
 
+    public function sort($column, $order)
+    {
+        $boissons = Boisson::orderBy($column, $order)->get();
+
+        if ($order == 'asc') {
+            $order = 'desc';
+            $dir = 'down';
+        } else {
+            $order = 'asc';
+            $dir = 'up';
+        }
+
+        $data = [
+            'boissons' => $boissons,
+        ];
+
+        if ($column == 'name') {
+            $data['sortName'] = '<a href="/boissons/sorts/name/' . $order . '">Name <i class="fa fa-sort-' . $dir . '"></i></a>';
+        } elseif ($column == 'price') {
+            $data['sortPrice'] = '<a href="/boissons/sorts/price/' . $order . '">Price <i class="fa fa-sort-' . $dir . '"></i></a>';
+        }
+
+        return view('back_office.boissons.index', $data);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -88,6 +115,7 @@ class BoissonsController extends Controller
      */
     public function destroy(Boisson $boisson)
     {
+        $boisson->ingredients()->detach();
         $boisson->delete();
         return redirect('/boissons');
     }

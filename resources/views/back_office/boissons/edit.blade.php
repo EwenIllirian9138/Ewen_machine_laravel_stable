@@ -23,7 +23,7 @@
             </tr>
         </table>
         <div class="btn-group">
-            <button type="submit" class="btn btn-outline-success">Update</button>
+            <button type="submit" class="btn btn-outline-success">Save</button>
             <a href="/boissons/{{ $boisson->id }}" class="btn btn-outline-danger">Cancel</a>
         </div>
     </form>

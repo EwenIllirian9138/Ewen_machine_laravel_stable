@@ -16,7 +16,38 @@ class IngredientsController extends Controller
     {
         $ingredients = Ingredient::all();
 
-        return view('back_office.Ingredients.index', ['ingredients' => $ingredients]);
+        $data = [
+            'ingredients' => $ingredients,
+        ];
+
+        return view('back_office.Ingredients.index', $data);
+    }
+
+    public function sort($column, $order)
+    {
+        $ingredients = Ingredient::orderBy($column, $order)->get();
+
+        if ($order == 'asc') {
+            $order = 'desc';
+            $dir = 'down';
+        } else {
+            $order = 'asc';
+            $dir = 'up';
+        }
+
+        $data = [
+            'ingredients' => $ingredients,
+        ];
+
+        if ($column == 'name') {
+            $data['sortName'] = '<a href="/ingredients/sorts/name/' . $order . '">Name <i class="fa fa-sort-' . $dir . '"></i></a>';
+        } elseif ($column == 'stock') {
+            $data['sortStock'] = '<a href="/ingredients/sorts/stock/' . $order . '">Stock <i class="fa fa-sort-' . $dir . '"></i></a>';
+
+        }
+        dump($data);
+
+        return view('back_office.Ingredients.index', $data);
     }
 
     /**
@@ -32,7 +63,7 @@ class IngredientsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,50 +75,60 @@ class IngredientsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ingredient  $ingredient
+     * @param  \App\Ingredient $ingredient
      * @return \Illuminate\Http\Response
      */
     public function show(Ingredient $ingredient)
     {
-        $ingredient_boissons = $ingredient->load('boisson');
-        return view('back_office.Ingredients.show', ['ingredient' => $ingredient_boissons]);
+        $data = [
+            'ingredient' => $ingredient->load('boisson'),
+            'ratio' => (($ingredient->stock) / ($ingredient->max) * 100),
+        ];
+
+        return view('back_office.Ingredients.show', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ingredient  $ingredient
+     * @param  \App\Ingredient $ingredient
      * @return \Illuminate\Http\Response
      */
     public function edit(Ingredient $ingredient)
     {
-        return view('back_office.Ingredients.edit', ['ingredient' => $ingredient]);
+        $data = [
+            'ingredient' => $ingredient,
+            'ratio' => (($ingredient->stock) / ($ingredient->max) * 100)
+        ];
+        return view('back_office.Ingredients.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ingredient  $ingredient
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Ingredient $ingredient
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Ingredient $ingredient)
     {
+        $stock = $request->stock * 100 / $ingredient->max;
         $ingredient->name = $request->name;
-        $ingredient->amount = $request->amount;
+        $ingredient->stock = $stock;
         $ingredient->save();
 
-        return redirect('/ingredients');
+        return redirect('/ingredients/' . $ingredient->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ingredient  $ingredient
+     * @param  \App\Ingredient $ingredient
      * @return \Illuminate\Http\Response
      */
     public function destroy(Ingredient $ingredient)
     {
+        $ingredient->boisson()->detach();
         $ingredient->delete();
         return redirect('/ingredients');
     }

@@ -14,16 +14,13 @@
 Route::get('/', function () {
     return view('front_office.preparation');
 });
-Route::get('back_office', function () {
-    return view('back_office.index');
-});
 
-Route::resource('ingredients' , 'IngredientsController', ['except' => ['destroy']]);
-Route::get('/ingredients/{ingredient}/destroy', 'IngredientsController@destroy');
+Route::get('ingredients/sorts/{column}/{order}', 'IngredientsController@sort');
+Route::resource('ingredients' , 'IngredientsController');
 
-Route::resource('boissons' , 'BoissonsController', ['except' => ['destroy']]);
-Route::get('/boissons/{boisson}/destroy', 'BoissonsController@destroy');
+Route::get('boissons/sorts/{column}/{order}', 'BoissonsController@sort');
+Route::resource('boissons' , 'BoissonsController');
 
-Route::get('/recipes/create/{boisson}', 'RecipesController@createForOne');
-Route::resource('recipes' , 'RecipesController');
-
+Route::resource('recipes' , 'RecipesController', ['only' => [
+    'edit', 'update', 'destroy'
+]]);

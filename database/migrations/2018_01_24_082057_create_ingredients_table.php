@@ -17,6 +17,7 @@ class CreateIngredientsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('stock');
+            $table->integer('max')->unsigned()->default(100);
         });
     }
 

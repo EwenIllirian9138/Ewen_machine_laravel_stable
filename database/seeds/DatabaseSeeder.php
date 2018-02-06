@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(App\Boisson::class, 50)->create()->each(function ($u) {
+            $u->ingredients()->save(factory(App\Ingredient::class)->make(), ['quantity' => rand(1, 5)]);
+        });
     }
 }

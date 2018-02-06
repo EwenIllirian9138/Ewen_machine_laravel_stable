@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark ">
 
     <a class="navbar-brand" href="/">Machine à café</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav"

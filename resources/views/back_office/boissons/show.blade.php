@@ -1,34 +1,42 @@
 @extends('template.back_office.default_template')
 
 @section('titre')
+    {{--<a href="/boissons" class="fa fa-angle-left fa-lg"></a>--}}
     Details de {{ $boisson->name }}
+    {{--<a href="/boissons" class="fa fa-angle-right fa-lg"></a>--}}
 @stop
 
 @section('content')
-    <table class="table">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>ID</th>
             <th>Nom</th>
             <th>Prix</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tr>
             <td>{{ $boisson->id }}</td>
             <td>{{ $boisson->name }}</td>
             <td>{{ $boisson->price }}</td>
+            <td>
+                <form id='delete{{ $boisson->id }}' action="/boissons/{{ $boisson->id }}" method="POST">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <button type="submit" form="delete{{ $boisson->id }}" class="btn btn-outline-danger">X</button>
+                </form>
+            </td>
         </tr>
     </table>
     <div class="btn-group">
-        <a href="/boissons/{{ $boisson->id }}/destroy" class="btn btn-outline-danger">Delete</a>
         <a href="/boissons/{{ $boisson->id }}/edit" type="submit" class="btn btn-outline-success">Edit</a>
-        <a href="/boissons" class="btn btn-outline-danger">Return</a>
     </div>
     </br>
     </br>
     <h2>Recipe</h2>
     </br>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>ID</th>
@@ -49,16 +57,12 @@
             </tr>
         @endforeach
     </table>
-    <div class="btn-group">
-        <a href="/recipes/{{ $boisson->id }}/destroy" class="btn btn-outline-danger">Delete All</a>
-        <a href="/recipes/{{ $boisson->id }}/edit" type="submit" class="btn btn-outline-success">Edit
-            Recipe</a>
-    </div>
+    <a href="/recipes/{{ $boisson->id }}/edit" type="submit" class="btn btn-outline-success">Edit Recipe</a>
     </br>
     </br>
     <h2>Sales</h2>
     </br>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>Ref</th>
@@ -72,5 +76,4 @@
             </tr>
         @endforeach
     </table>
-
 @endsection

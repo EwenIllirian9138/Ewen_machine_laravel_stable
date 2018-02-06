@@ -6,3 +6,39 @@
     width: auto;
     display: initial;
 }
+
+.gestion_progress, #slider {
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+}
+#slider {
+    top: -22px;
+}
+.progress {
+    border-radius: 5rem;
+}
+
+#slider {
+    z-index: 1;
+    padding: 0px;
+    background: transparent;
+}
+
+input[type=range]::-moz-range-track {
+    height: 0px;
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 20px;
+    width: 8px;
+    border-radius: 20%;
+}
+
+.progress-bar {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}

@@ -6,7 +6,7 @@
 <body>
 <div class="flex-center position-ref full-height">
     <div class="top-right links">
-        <a href="/back_office">Back Office</a>
+        <a href="/boissons">Back Office</a>
     </div>
 
 

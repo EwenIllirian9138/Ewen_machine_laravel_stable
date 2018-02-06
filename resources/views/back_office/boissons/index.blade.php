@@ -9,8 +9,26 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Price</th>
+                <th>
+                    @if(isset($sortName))
+                        {!! $sortName !!}
+                    @else
+                        <a href="/boissons/sorts/name/asc">
+                            Name
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    @endif
+                </th>
+                <th>
+                    @if(isset($sortPrice))
+                        {!! $sortPrice !!}
+                    @else
+                        <a href="/boissons/sorts/price/asc">
+                            Price
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    @endif
+                </th>
                 <th>Details</th>
             </tr>
             </thead>

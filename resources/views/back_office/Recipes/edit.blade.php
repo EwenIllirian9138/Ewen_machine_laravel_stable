@@ -8,7 +8,7 @@
     <form method="post" action="/recipes/{{ $boisson->id }}">
         {{ method_field('PUT') }}
         {{ csrf_field() }}
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th>ID</th>
@@ -45,6 +45,11 @@
             <tfoot id="new_ingredients">
             <tr class="line">
                 <td>
+                    @if(count($all_ingredients) <= 0)
+                        <a href="/ingredients/create" class="btn btn-outline-warning">New ingredient</a>
+                        <br/>
+                        <br/>
+                    @endif
                     <a href="#" onclick="return false;" id="add_line" class="btn btn-outline-success">+</a>
                     <a href="#" onclick="return false;" class="remove_line btn btn-outline-danger">-</a>
                 </td>
@@ -63,9 +68,9 @@
             </tr>
             </tfoot>
         </table>
-            <div class="btn-group">
-            <button type="submit" class="btn btn-outline-success">Edit</button>
-            <a href="/boissons/{{$boisson->id}}" class="btn btn-outline-danger">Cancel</a>
+        <div class="btn-group">
+                <button type="submit" class="btn btn-outline-success">Save</button>
+                <a href="/boissons/{{$boisson->id}}" class="btn btn-outline-danger">Cancel</a>
         </div>
 
     </form>
