@@ -15,12 +15,18 @@ Route::get('/', function () {
     return view('front_office.preparation');
 });
 
-Route::get('ingredients/sorts/{column}/{order}', 'IngredientsController@sort');
-Route::resource('ingredients' , 'IngredientsController');
+Route::middleware('admin')->group(function () {
+    Route::get('ingredients/sorts/{column}/{order}', 'IngredientsController@sort');
+    Route::resource('ingredients', 'IngredientsController');
 
-Route::get('boissons/sorts/{column}/{order}', 'BoissonsController@sort');
-Route::resource('boissons' , 'BoissonsController');
+    Route::get('boissons/sorts/{column}/{order}', 'BoissonsController@sort');
+    Route::resource('boissons', 'BoissonsController');
 
-Route::resource('recipes' , 'RecipesController', ['only' => [
-    'edit', 'update', 'destroy'
-]]);
+    Route::resource('recipes', 'RecipesController', ['only' => [
+        'edit', 'update', 'destroy'
+    ]]);
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

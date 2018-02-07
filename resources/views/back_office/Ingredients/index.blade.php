@@ -37,7 +37,7 @@
             <tr>
                 <td>{{$ingredient->name}}</td>
                 <td>
-                    @include('back_office.boissons.progress')
+                    @include('back_office.Ingredients.progress')
                 </td>
                 <td>
                     <a href="/ingredients/{{ $ingredient->id }}" class="fa fa-search-plus fa-lg" aria-hidden="true"></a>

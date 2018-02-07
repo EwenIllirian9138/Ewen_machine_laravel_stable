@@ -5,17 +5,12 @@
 </head>
 <body>
 <div class="flex-center position-ref full-height">
-    <div class="top-right links">
-        <a href="/boissons">Back Office</a>
-    </div>
-
 
     <div class="content">
         <div class="title m-b-md">
             @yield('titre')
         </div>
-
-        @include('template.front_office.liens_fragment')
+        @include('template.navbar')
     </div>
 </div>
 </body>

@@ -4,7 +4,7 @@
     @include('template.head_fragment')
 </head>
 <body>
-@include('template.back_office.navbar')
+@include('template.navbar')
 
 <header>
     <div class="content">

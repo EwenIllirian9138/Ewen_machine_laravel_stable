@@ -45,7 +45,6 @@ class IngredientsController extends Controller
             $data['sortStock'] = '<a href="/ingredients/sorts/stock/' . $order . '">Stock <i class="fa fa-sort-' . $dir . '"></i></a>';
 
         }
-        dump($data);
 
         return view('back_office.Ingredients.index', $data);
     }

@@ -26,6 +26,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/default_template.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/table_style.css') }}">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 <script type="text/javascript" src="{{ asset('js/add_form_line.js') }}"></script>
 

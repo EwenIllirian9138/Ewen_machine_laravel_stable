@@ -18,7 +18,7 @@
             <td>{{ $ingredient->id }}</td>
             <td>{{ $ingredient->name }}</td>
             <td>
-                @include('back_office.boissons.progress')
+                @include('back_office.Ingredients.progress')
 
             </td>
             <td>

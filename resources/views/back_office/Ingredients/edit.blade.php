@@ -20,7 +20,7 @@
                 <td>{{ $ingredient->id }}</td>
                 <td><input type="text" class="form-control" name="name" value="{{ $ingredient->name }}"></td>
                 <td>
-                    @include('back_office.boissons.progress')
+                    @include('back_office.Ingredients.progress')
                     <input id="slider" type="range" value="{{ $ratio }}" min="0"
                            max="100" step="1" name="stock">
                 </td>

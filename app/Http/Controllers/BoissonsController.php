@@ -77,8 +77,8 @@ class BoissonsController extends Controller
      */
     public function show(Boisson $boisson)
     {
-        $boisson_sales = $boisson->load('sales', 'ingredients');
-        return view('back_office.boissons.show', ['boisson' => $boisson_sales]);
+        $boisson = $boisson->load('sales', 'ingredients');
+        return view('back_office.boissons.show', ['boisson' => $boisson]);
     }
 
     /**
