@@ -15,7 +15,18 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('boisson_id')->index('boisson_id');
+            $table->integer('boisson_id')
+                ->index('boisson_id')
+                ->foreign('boisson_id')
+                ->references('id')
+                ->on('boisson');
+            $table->integer('user_id')
+                ->index('user_id')
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->nullable()
+                ->default(null);
             $table->timestamps();
         });
     }

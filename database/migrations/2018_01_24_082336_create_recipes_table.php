@@ -19,12 +19,12 @@ class CreateRecipesTable extends Migration
                 ->index('boisson_id')
                 ->foreign('boisson_id')
                 ->references('id')
-                ->on('boisson');
+                ->on('boissons');
             $table->integer('ingredient_id')
                 ->index('ingredient_id')
                 ->foreign('ingredient_id')
                 ->references('id')
-                ->on('ingredient');
+                ->on('ingredients');
             $table->integer('quantity');
         });
         Schema::enableForeignKeyConstraints();

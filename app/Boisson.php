@@ -9,12 +9,22 @@ class Boisson extends Model
     public $timestamps = false;
     protected $fillable = ['name', 'price'];
 
-    public function sales() {
+    public function sales()
+    {
         return $this->hasMany('App\Sale');
     }
 
-    public function ingredients() {
+
+    public function ingredients()
+    {
         return $this->belongsToMany('App\Ingredient', 'recipes')
             ->withPivot('id', 'quantity');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'sales')
+            ->withPivot('id')
+            ->withTimestamps();
     }
 }

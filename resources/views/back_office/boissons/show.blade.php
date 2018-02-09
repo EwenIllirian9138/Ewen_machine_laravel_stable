@@ -1,4 +1,4 @@
-@extends('template.back_office.default_template')
+@extends('template.default_template')
 
 @section('titre')
     {{--<a href="/boissons" class="fa fa-angle-left fa-lg"></a>--}}
@@ -66,13 +66,15 @@
         <thead>
         <tr>
             <th>Ref</th>
+            <th>User</th>
             <th>Purchased at</th>
         </tr>
         </thead>
-        @foreach($boisson->sales as $sale)
+        @foreach($boisson->users as $user)
             <tr>
-                <td>{{ $sale->id }}</td>
-                <td>{{ $sale->created_at }}</td>
+                <td>{{ $user->pivot->id }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->pivot->created_at }}</td>
             </tr>
         @endforeach
     </table>

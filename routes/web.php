@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('front_office.preparation');
+    return redirect('/sales/create');
 });
 
 Route::middleware('admin')->group(function () {
@@ -25,8 +25,14 @@ Route::middleware('admin')->group(function () {
     Route::resource('recipes', 'RecipesController', ['only' => [
         'edit', 'update', 'destroy'
     ]]);
+
 });
 
-Auth::routes();
 
+Route::resource('/sales', 'SalesController', ['except' => [
+    ''
+]]);
+
+
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,4 +1,4 @@
-@extends('template.back_office.default_template')
+@extends('template.default_template')
 
 @section('titre')
     Editer la recette de {{ $boisson->name }}

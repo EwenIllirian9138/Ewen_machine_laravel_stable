@@ -4,15 +4,18 @@
     @include('template.head_fragment')
 </head>
 <body>
-@include('template.navbar')
-
 <header>
-    <div class="content">
-        <div class="title m-b-md">
-            @yield('titre')
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">
+                @yield('titre')
+            </h1>
+            <p class="lead">@yield('description')</p>
         </div>
     </div>
 </header>
+
+@include('template.navbar')
 
 <section class="content container">
     @yield('content')

@@ -2,12 +2,20 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Sale extends Model
+class Sale extends pivot
 {
+    protected $table = 'sales';
+    protected $fillable = ['boisson_id', 'user_id'];
+
     public function boisson()
     {
         return $this->belongsTo('App\Boisson');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }
