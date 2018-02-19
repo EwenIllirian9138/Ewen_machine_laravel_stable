@@ -30,12 +30,6 @@ input[type=number]
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.coins {
-    flex-grow: 1;
-    flex-basis: 0;
-    min-width: 71px;
-    max-width: 71px;
-}
 #navbar {
     z-index: 1000;
 }

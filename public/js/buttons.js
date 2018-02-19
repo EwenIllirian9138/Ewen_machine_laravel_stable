@@ -30,28 +30,8 @@ $(document).ready(function() {
      //    }
     // });
     //
-    // $('#gobelet').click(function() {
-     //    if ($('#chargement').width() == 768) {
-     //        $('#gobelet').fadeOut('slow');
-     //        $('#chargement').width('0px');
-     //        $('.boissons').html('Veuillez selectionner une boisson');
-     //        $('.ingredients').height('0');
-     //        $('#Lait').css('margin-top', '198px');
-     //        $('.ingredients').css('background-color', '').fadeTo(0, 1);
-     //    }
-    // }).hide();
     //
-	// $('.coins').click(function(){
-	// 	ajoutPiece($(this).attr('alt'));
-	// }).hover(function() {
-	// 	$(this).css('box-shadow', '0 0 20px white');
-	// }, function() {
-	// 	$(this).css('box-shadow', '0 0 0 white');
-	// }).mousedown(function() {
-	// 	$(this).css('padding',  '1px');
-	// }).mouseup(function() {
-	// 	$(this).css('padding', '0px');
-	// });
+
     //
 	// $('#btnResetMonnaie img').click(function() {
 	// 	monnayeur(0);

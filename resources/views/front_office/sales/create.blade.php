@@ -6,33 +6,44 @@
 
 @section('content')
 
-    <div id="machine">
+    @if($errors->any())
+        <div class="col-md-8 alert alert-warning alert-dismissible fade show" role="alert">
+            @foreach( $errors->all() as $error)
+                <strong>Attention !</strong> {{ $error }}
+            @endforeach
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
+    <div id="machine">
         <form id="storeSale" action="/sales" method="post">
             {{ csrf_field() }}
             <select class="hidden" name="id" id="selectDrink">
                 @foreach($boissons as$boisson)
-                    <option value="{{ $boisson->id }}">{{ $boisson->name }}</option>
+                    <option value="{{ $boisson->id }}">{{ $boisson->name }}/{{ $boisson->price/100 . '€' }}</option>
                 @endforeach
             </select>
 
-            <input id="sucresNb" class="hidden" name="sucres" type="radio" value="" checked="checked">
-            <input id="200" class="hidden coinForm" name="200" type="radio" value="0" checked="checked">
-            <input id="100" class="hidden coinForm" name="100" type="radio" value="0" checked="checked">
-            <input id="50" class="hidden coinForm" name="50" type="radio" value="0" checked="checked">
-            <input id="20" class="hidden coinForm" name="20" type="radio" value="0" checked="checked">
-            <input id="10" class="hidden coinForm" name="10" type="radio" value="0" checked="checked">
-            <input id="5" class="hidden coinForm" name="5" type="radio" value="0" checked="checked">
+            <input id="sucresNb" class="hidden" name="selectSucre" type="radio" value="" checked="checked">
+
+            <input name="coin[200]" type="hidden" value="0" alt="200">
+            <input name="coin[100]" type="hidden" value="0" alt="100">
+            <input name="coin[50]" type="hidden" value="0" alt="50">
+            <input name="coin[20]" type="hidden" value="0" alt="20">
+            <input name="coin[10]" type="hidden" value="0" alt="10">
+            <input name="coin[5]" type="hidden" value="0" alt="5">
 
             <button id="validerChoix" class="hidden" name="submit" type="submit"></button>
         </form>
 
         <div id="moneyForm" class="hidden porteMonnaie">
-            <img class="coins porteMonnaie" src="{{ asset('img/pieces/2euro.png') }}" alt="0">
-            <img class="coins porteMonnaie" src="{{ asset('img/pieces/1euro.png') }}" alt="1">
-            <img class="coins porteMonnaie" src="{{ asset('img/pieces/50cent.png') }}" alt="2">
-            <img class="coins porteMonnaie" src="{{ asset('img/pieces/20cent.png') }}" alt="3">
-            <img class="coins porteMonnaie" src="{{ asset('img/pieces/10cent.png') }}" alt="4">
+            <img class="coins porteMonnaie" src="{{ asset('img/pieces/2euro.png') }}" alt="200">
+            <img class="coins porteMonnaie" src="{{ asset('img/pieces/1euro.png') }}" alt="100">
+            <img class="coins porteMonnaie" src="{{ asset('img/pieces/50cent.png') }}" alt="50">
+            <img class="coins porteMonnaie" src="{{ asset('img/pieces/20cent.png') }}" alt="20">
+            <img class="coins porteMonnaie" src="{{ asset('img/pieces/10cent.png') }}" alt="10">
             <img class="coins porteMonnaie" src="{{ asset('img/pieces/5cent.png') }}" alt="5">
         </div>
 
@@ -49,6 +60,7 @@
                 </div>
 
                 <div class="boissons"></div>
+                <div class="price"></div>
 
             </div>
 
@@ -90,9 +102,7 @@
 
             <div id="afficheurMonnaie">
                 <p class="monnaie" id="monnaieUser">
-                    <?php
-                    //                    echo $monnaie / 100 + " €";
-                    ?>
+                    00.00€
                 </p>
                 <img id="validation" src="{{ asset('img/monnayeur/ecranMonnaie.png') }}" alt="monnaie">
             </div>

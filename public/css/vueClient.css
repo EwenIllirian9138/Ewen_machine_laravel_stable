@@ -1,9 +1,9 @@
 /** {*/
     /*font-family: 'Basic';*/
 /*}*/
-body {
-    background-color: lightgrey;
-}
+/*body {*/
+    /*background-color: lightgrey;*/
+/*}*/
 #machine {
     background-image: url('../img/vue1.png');
     height: 1024px;
