@@ -1,31 +1,97 @@
 function moneyCount() {
-    let displayer = $('#displayMoney');
-    let inputMoney = $('#totalMoney');
+    let displayer = $('#monnaieUser');
     let total = 0;
+
     for (let i = 0; i < $('.coins').length; i++) {
-        let who = $('.coins:eq(' + i + ')');
-        let what = Number((who.children('label').html().split('€'))[0]);
-        let multiple = Number(who.children('input').val());
-        let howMuch = what * multiple;
+
+        let alt = $('.coins:eq(' + i + ')').attr('alt');
+
+        let multiple = $("input[name='coin[" + alt + "]']").val();
+
+        let howMuch = (alt * multiple)/100;
+
         total += howMuch;
+
         total = Number((total).toFixed(2));
     }
     displayer.html(total + '€');
-    inputMoney.val(total * 100);
 }
 
 function displayDrink() {
-    $('.boissons').html($('#selectDrink option:selected').html());
+    let content = $('#selectDrink option:selected').html().split('/');
+    $('.boissons').html(content[0]);
+    $('.price').html(content[1]);
 }
 
 $(document).ready(function () {
-    displayDrink();
 
-    $('#btnValider img').click(function() {
-       if ($('#chargement').width() == 0) {
-    	$('#validerChoix').click();
-       }
+    moneyCount();
+    displayDrink();
+    $('.coins input').val(0);
+
+    $('#btnValider img').click(function () {
+        if ($('#chargement').width() == 0) {
+            $('#validerChoix').click();
+        }
     });
+
+    $('.coins').click(function () {
+        let alt = $(this).attr('alt');
+        let selector = $("input[name='coin[" + alt + "]']");
+        let val = Number(selector.val()) + 1;
+        console.log(val);
+        selector.val(val);
+
+        moneyCount();
+
+    }).hover(function () {
+        $(this).css('box-shadow', '0 0 20px white');
+    }, function () {
+        $(this).css('box-shadow', '0 0 0 white');
+    }).mousedown(function () {
+        $(this).css('padding', '1px');
+    }).mouseup(function () {
+        $(this).css('padding', '0px');
+    });
+
+    $('#btnMoney img').click(function () {
+        let etat = $(this).attr('src').split('.png').join('').split('/img/buttons/euro').join('');
+        if (etat === 'Hover') {
+            $(this).attr('src', $(this).attr('src').split('Hover').join('Push'));
+        } else {
+            $(this).attr('src', '/img/buttons/euroHover.png');
+        }
+        $('#moneyForm').toggleClass('hidden');
+        $(this).parent().toggleClass('backgroundGrey');
+    }).hover(function () {
+        let etat = $(this).attr('src').split('.png').join('').split('/img/buttons/euro').join('');
+        if (etat === 'Normal') {
+            $(this).attr('src', $(this).attr('src').split('Normal').join('Hover'));
+        }
+    }, function () {
+        $(this).attr('src', $(this).attr('src').split('Hover').join('Normal'));
+    });
+
+    $('html').click(function () {
+        $('#moneyForm').addClass('hidden');
+        $('#btnMoney').removeClass('backgroundGrey');
+        $('#btnMoney img').attr('src', '/img/buttons/euroNormal.png');
+    });
+
+    $('.porteMonnaie').click(function (event) {
+        event.stopPropagation();
+    });
+
+    $('#gobelet').click(function () {
+        if ($('#chargement').width() == 768) {
+            $('#gobelet').fadeOut('slow');
+            $('#chargement').width('0px');
+            $('.boissons').html('Veuillez selectionner une boisson');
+            $('.ingredients').height('0');
+            $('#Lait').css('margin-top', '198px');
+            $('.ingredients').css('background-color', '').fadeTo(0, 1);
+        }
+    }).hide();
 
     $('.buttons').hover(function () {
         $(this).attr('src', $(this).attr('src').split('Normal').join('Hover'));
@@ -35,25 +101,6 @@ $(document).ready(function () {
         $(this).attr('src', $(this).attr('src').split('Hover').join('Push'));
     }).mouseup(function () {
         $(this).attr('src', $(this).attr('src').split('Push').join('Hover'));
-    });
-
-    $('.coins input').val(0);
-    $('#selectPrice').val($('#selectDrink option:selected').val());
-
-    $('.coin-next').click(function () {
-        let how = Number($(this).next().html()) + 1;
-        $(this).next().html(how);
-        $(this).siblings('input').val(how);
-        moneyCount();
-    });
-
-    $('.coin-prev').click(function () {
-        let how = Number($(this).siblings('.count').html()) - 1;
-        if (how >= 0) {
-            $(this).siblings('.count').html(how);
-            $(this).siblings('input').val(how);
-            moneyCount();
-        }
     });
 
     $('#btnDroite').click(function () {
@@ -94,6 +141,4 @@ $(document).ready(function () {
         }
     });
 
-}).on('click', function () {
-    $('#selectPrice').val($('#selectDrink option:selected').val());
 });
