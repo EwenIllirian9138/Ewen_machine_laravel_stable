@@ -1,5 +1,5 @@
 @extends('template.default_template')
-
+@include('template.navbar')
 @section('titre')
     Editer la recette de {{ $boisson->name }}
 @stop
