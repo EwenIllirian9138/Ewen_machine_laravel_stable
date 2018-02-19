@@ -10,16 +10,23 @@
             <h1 class="display-4">
                 @yield('titre')
             </h1>
-            <p class="lead">@yield('description')</p>
         </div>
     </div>
 </header>
-
 @include('template.navbar')
 
+
 <section class="content container">
+    {{--<div class="mb-5 mt-5">--}}
     @yield('content')
+    {{--</div>--}}
 </section>
+
+<footer class="bg-dark">
+    <div class="container">
+        <em>Machine à café laravel ilot 5</em>
+    </div>
+</footer>
 
 </body>
 </html>

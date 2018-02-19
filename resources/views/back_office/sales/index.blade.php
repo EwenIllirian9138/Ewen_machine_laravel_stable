@@ -1,7 +1,7 @@
 @extends('template.default_template')
 
 @section('titre')
-    Gestion des boissons
+    Index commandes
 @stop
 
 @section('content')
@@ -9,39 +9,28 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>
-                    @if(isset($sortName))
-                        {!! $sortName !!}
-                    @else
-                        <a href="/boissons/sorts/name/asc">
-                            Name
-                            <i class="fa fa-sort"></i>
-                        </a>
-                    @endif
-                </th>
-                <th>
-                    @if(isset($sortPrice))
-                        {!! $sortPrice !!}
-                    @else
-                        <a href="/boissons/sorts/price/asc">
-                            Price
-                            <i class="fa fa-sort"></i>
-                        </a>
-                    @endif
-                </th>
-                <th>Details</th>
+                <th>Ref</th>
+                <th>Boisson</th>
+                <th>Sucre(s)</th>
+                <th>Prix</th>
+                <th>User</th>
+                <th>Date</th>
             </tr>
             </thead>
-            @foreach($boissons as $boisson )
+            @foreach($sales as $sale)
                 <tr>
-                    <td>{{ $boisson->name }}</td>
-                    <td>{{ $boisson->price }}</td>
-                    <td>
-                        <a href="/boissons/{{ $boisson->id }}" class="fa fa-search-plus fa-lg" aria-hidden="true"></a>
-                    </td>
+                    <td>{{ $sale->id }}</td>
+                    <td>{{ $sale->boisson->name }}</td>
+                    <td>{{ $sale->sugar }}</td>
+                    <td>{{ $sale->boisson->price }}</td>
+                    @if(isset($sale->user->name))
+                        <td>{{ $sale->user->name }}</td>
+                    @else
+                        <td>guest</td>
+                    @endif
+                    <td>{{ $sale->created_at }}</td>
                 </tr>
             @endforeach
         </table>
-        <a href="/boissons/create" type="button" class="btn btn-outline-success">New</a>
     </div>
 @endsection

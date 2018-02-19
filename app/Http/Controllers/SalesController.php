@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSales;
 use App\Sale;
+use App\Http\Controllers\App\Preparation;
 use App\Boisson;
 use App\Ingredient;
 use App\User;
@@ -17,8 +19,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $sales = Sale::all();
-        return view('back_office.sales.index');
+        $sales = Sale::all()->load('user', 'boisson');
+        return view('back_office.sales.index', ['sales' => $sales]);
     }
 
     /**
@@ -26,7 +28,8 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public
+    function create()
     {
         $boissons = Boisson::all()->load('ingredients');
 
@@ -51,16 +54,34 @@ class SalesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public
+    function store(CreateSales $request)
     {
+        $boisson = Boisson::find(request('id'));
+        $coins = request('coin');
         $data = [
-            'boisson_id' => request('selectDrink'),
-            'user_id' => request('user')
+            'boisson_id' => $boisson->id,
+            'user_id' => \Auth::id(),
+            'sugar' => request('selectSucre'),
         ];
 
-        Sale::create($data);
+        $preparation = new Preparation($boisson, $coins);
 
-        return redirect()->back();
+        if ($preparation->enoughMoney) {
+            if ($preparation->can) {
+                $preparation->store();
+                Sale::create($data);
+                return redirect('/coins')->with(['coins' => $preparation->renduCoins]);
+            } else {
+                return redirect()->back()->withErrors('Ne pourras pas rendre la monnaie');
+            }
+
+        } else {
+
+            return redirect()->back()->withErrors('Monnaie insufisante');
+
+        }
+
     }
 
     /**
@@ -69,7 +90,8 @@ class SalesController extends Controller
      * @param  \App\Sale $sale
      * @return \Illuminate\Http\Response
      */
-    public function show(User $sale)
+    public
+    function show(User $sale)
     {
         $user = $sale->load('boissons');
         return view('front_office.sales.show', ['user' => $user]);
@@ -81,7 +103,8 @@ class SalesController extends Controller
      * @param  \App\Sale $sale
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $sale)
+    public
+    function edit(Sale $sale)
     {
         //
     }
@@ -93,7 +116,8 @@ class SalesController extends Controller
      * @param  \App\Sale $sale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public
+    function update(Request $request, Sale $sale)
     {
         //
     }
@@ -104,7 +128,8 @@ class SalesController extends Controller
      * @param  \App\Sale $sale
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public
+    function destroy(Sale $sale)
     {
         //
     }

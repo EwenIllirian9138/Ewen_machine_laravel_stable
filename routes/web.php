@@ -15,7 +15,12 @@ Route::get('/', function () {
     return redirect('/sales/create');
 });
 
+Route::resource('/sales', 'SalesController', ['only' => [
+    'create', 'store'
+]]);
+
 Route::middleware('admin')->group(function () {
+
     Route::get('ingredients/sorts/{column}/{order}', 'IngredientsController@sort');
     Route::resource('ingredients', 'IngredientsController');
 
@@ -26,13 +31,13 @@ Route::middleware('admin')->group(function () {
         'edit', 'update', 'destroy'
     ]]);
 
+    Route::resource('/sales', 'SalesController', ['except' => [
+        'create', 'store'
+    ]]);
+
+    Route::resource('/coins', 'CoinController');
+
 });
-
-
-Route::resource('/sales', 'SalesController', ['except' => [
-    ''
-]]);
-
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

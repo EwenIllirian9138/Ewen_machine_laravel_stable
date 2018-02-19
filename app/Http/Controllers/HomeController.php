@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('front_office.home');
+        $sales = \Auth::user()->sales;
+        $data = [
+            'sales' => $sales->load('user', 'boisson')
+        ];
+        return view('front_office.home', $data);
     }
 }

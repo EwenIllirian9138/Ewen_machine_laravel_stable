@@ -27,6 +27,7 @@ class CreateSalesTable extends Migration
                 ->on('users')
                 ->nullable()
                 ->default(null);
+            $table->integer('sugar')->unsigned();
             $table->timestamps();
         });
     }

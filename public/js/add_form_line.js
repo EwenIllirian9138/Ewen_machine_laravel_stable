@@ -42,10 +42,6 @@ $(document).ready(function () {
         }
     });
 
-    $('td').width(function () {
-        return ((100 / ($(this).parent().children().length)) + '%');
-    });
-
 }).on('click', function () {
     $('.remove_line').click(function () {
         $(this).parent().parent().remove();

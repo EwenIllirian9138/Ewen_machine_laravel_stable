@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-    <div class="table-responsive">
         <table class="table table-hover">
             <thead>
             <tr>
@@ -42,6 +41,5 @@
                 </tr>
             @endforeach
         </table>
-        <a href="/boissons/create" type="button" class="btn btn-outline-success">New</a>
-    </div>
+        <a href="/boissons/create" type="button" class="align-self-center btn btn-outline-success">New</a>
 @endsection

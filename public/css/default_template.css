@@ -6,21 +6,54 @@ html, body {
     height: 100vh;
     margin: 0;
     text-align: center;
-
 }
-section {
-    position: relative;
-    top: 5%;
+.flex-row {
+    justify-content: center;
 }
-.sticky + .content {
-    padding-top: 91px;
+#displayMoney {
+    width: 91px;
+    text-align: center;
 }
-h1 {
-    color: #343a40;
+.flex-grow-2 {
+    flex-grow: 2;
+}
+input[type=number]
+{
+    -moz-appearance: textfield;
+}
+.prepChild {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.coins {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 71px;
+    max-width: 71px;
 }
 #navbar {
     z-index: 1000;
-    margin-bottom: 32px;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+footer .container {
+    padding: 10px;
+}
+section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.sticky + .content {
+    padding-top: 60px;
+}
+h1 {
+    color: #343a40;
 }
 .full-height {
     height: 100vh;
@@ -88,4 +121,16 @@ a:hover {
 }
 .custom-select {
     background: none;
+}
+#selectSucre {
+    width: auto;
+}
+#labelSucre {
+    writing-mode: vertical-lr;
+    width: 46px;
+    margin-left: 8px;
+    text-orientation: sideways;
+}
+.bg-custom {
+    background-color: #ccc4b1;
 }

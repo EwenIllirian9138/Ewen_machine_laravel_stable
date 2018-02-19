@@ -1,7 +1,15 @@
-.table > thead:first-child > tr:first-child > th {
-    text-align: center;
+table, thead, tbody {
+    display: flex;
+    flex-direction: column;
 }
-
+tr {
+    display: flex;
+    flex-direction: row;
+}
+th, td {
+    flex-grow: 1;
+    flex-basis: 0;
+}
 .form-control {
     width: auto;
     display: initial;

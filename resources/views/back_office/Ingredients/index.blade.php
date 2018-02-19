@@ -19,7 +19,7 @@
                 @endif
 
             </th>
-            <th scope="col">
+            <th class="flex-grow-2" scope="col">
                 @if(isset($sortStock))
                     {!! $sortStock !!}
                 @else
@@ -36,7 +36,7 @@
         @foreach($ingredients as $ingredient)
             <tr>
                 <td>{{$ingredient->name}}</td>
-                <td>
+                <td class="flex-grow-2">
                     @include('back_office.Ingredients.progress')
                 </td>
                 <td>

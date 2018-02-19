@@ -116,6 +116,7 @@ class BoissonsController extends Controller
     public function destroy(Boisson $boisson)
     {
         $boisson->ingredients()->detach();
+        $boisson->users()->dissociate();
         $boisson->delete();
         return redirect('/boissons');
     }

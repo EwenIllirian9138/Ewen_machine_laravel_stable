@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class Sale extends pivot
 {
     protected $table = 'sales';
-    protected $fillable = ['boisson_id', 'user_id'];
+    protected $fillable = ['boisson_id', 'user_id', 'sugar'];
 
     public function boisson()
     {
