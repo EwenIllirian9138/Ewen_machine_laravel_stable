@@ -135,12 +135,5 @@
                 <div id="Sucre" class="ingredients"></div>
             </div>
         </div>
-
-        <div class="maintenance">
-            <a href="vueMaintenance.php">
-                <img class="buttons" src="{{ asset('img/buttons/adminNormal.png') }}">
-            </a>
-        </div>
-
     </div>
 @endsection

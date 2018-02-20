@@ -4,7 +4,7 @@
     @include('template.head_fragment')
 </head>
 <body>
-
+<img id="background" src="{{ asset('img/7420.jpg') }}"/>
 <div class="top-right">
 
     <div class="dropdown">
@@ -49,7 +49,7 @@
     </div>
 </div>
 
-<section class="content container">
+<section class="front_section content container">
     @yield('content')
 </section>
 

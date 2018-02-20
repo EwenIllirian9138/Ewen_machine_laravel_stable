@@ -2,6 +2,11 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     @include('template.head_fragment')
+    <style>
+        body {
+            background-image: url("../img/skulls.png");
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -15,7 +20,7 @@
 </header>
 @include('template.navbar')
 
-<section class="content container">
+<section class="back_section content container">
     <div class="mb-5 mt-5">
         @yield('content')
     </div>

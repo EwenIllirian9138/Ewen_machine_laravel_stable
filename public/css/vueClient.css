@@ -1,23 +1,10 @@
 /** {*/
-    /*font-family: 'Basic';*/
+/*font-family: 'Basic';*/
 /*}*/
 /*body {*/
-    /*background-color: lightgrey;*/
+/*background-color: lightgrey;*/
+/*background-color: lightgrey;*/
 /*}*/
-#machine {
-    background-image: url('../img/vue1.png');
-    height: 1024px;
-    width: 768px;
-    margin-left: auto;
-    margin-right: auto;
-}
-#vue2 {
-    background-image: url('../img/vue2.png');
-    height: 1024px;
-    width: 768px;
-    margin-left: auto;
-    margin-right: auto;
-}
 #recettes {
     padding: 20px;
     color: white;
@@ -33,12 +20,15 @@
     font-size: 30px;
     position: center;
 }
+
 #afficheur {
     height: 256px;
 }
+
 #gauche, #droite, #affichageChoix {
     float: left;
 }
+
 #affichageChoix {
     height: 192px;
     width: 568px;
@@ -46,15 +36,17 @@
     margin-top: 30px;
     padding: 20px;
 }
+
 #gauche, #droite {
     width: 100px;
     height: 100%;
 }
-#btnGauche, #btnDroite{
+
+#btnGauche, #btnDroite {
     position: relative;
     top: 91px;
-    left: 13px;
 }
+
 #chargement {
     width: 0px;
     position: absolute;
@@ -62,11 +54,14 @@
     height: 2px;
     top: 253px;
 }
+
 .boissons {
     font-size: 22px;
 }
-.boissons ul li{
+
+.boissons ul li {
 }
+
 /* Fin Afficheur */
 
 #monnayeur, #zoneSucre, #btnValider {
@@ -81,26 +76,31 @@
     padding-bottom: 13px;
     padding-right: 13px;
 }
+
 #btnMoney {
     padding-top: 3px;
     text-align: center;
-    border-radius: 60px 60px 0 0 ;
+    border-radius: 60px 60px 0 0;
     height: 73px;
     width: 35%;
     float: left;
 }
+
 #btnMoney img {
     display: inline;
 }
+
 #fente {
     float: left;
     height: 73px;
     width: 30%;
     padding-top: 23px;
 }
-#fente img{
+
+#fente img {
     width: 100%;
 }
+
 #afficheurMonnaie {
     float: left;
     margin-top: 13px;
@@ -108,11 +108,13 @@
     height: 50px;
     margin-bottom: 40px;
 }
+
 #afficheurMonnaie > img {
     width: 70%;
     height: 100%;
 }
-#monnaieUser{
+
+#monnaieUser {
     position: absolute;
     text-align: center;
     margin: 0;
@@ -122,6 +124,7 @@
     width: 154px;
     text-shadow: 0px 0px 10px red;
 }
+
 #btnResetMonnaie {
     float: left;
     width: 100%;
@@ -129,6 +132,7 @@
     margin-top: 10px;
     height: 73px;
 }
+
 #retourMonnaie {
     float: left;
     width: 100%;
@@ -136,11 +140,13 @@
     height: 50%;
     margin-top: 31px;
 }
+
 #retourMonnaie img {
     display: inline;
     width: 50%;
     z-index: 1;
 }
+
 #moneyForm {
     z-index: 100;
     border-radius: 0 100px 100px 100px;
@@ -155,12 +161,15 @@
     color: white;
     position: absolute;
 }
+
 .backgroundGrey {
     background-color: rgba(0, 0, 0, 0.7);
 }
+
 .hidden {
     display: none;
 }
+
 .coins {
     float: left;
     margin-top: 19px;
@@ -169,11 +178,13 @@
     margin-left: 10px;
     display: inline;
 }
+
 /* Fin Monnayeur */
 
 #btnValider {
     width: 20%;
 }
+
 #btnValider img {
     width: 100%;
 }
@@ -183,14 +194,21 @@
     margin-left: 27%;
     padding: 13px;
 }
+
 #btnMoins, #btnPlus {
     height: 20%;
 }
-#ledSucres {
-    padding-top: 20px;
-    padding-left: 10px;
-    height: 60%;
+
+#leds {
+    margin: auto;
 }
+
+#ledSucres {
+    height: 60%;
+    display: flex;
+    margin-left: -6px;
+}
+
 /* Fin Zone Sucre */
 
 /* Gobelet */
@@ -199,6 +217,7 @@
     height: 403px;
     float: left;
 }
+
 #gobelet {
     float: right;
     padding-top: 4%;
@@ -210,29 +229,37 @@
     width: 38%;
     height: 239px;
 }
+
 .ingredients {
     width: 100%;
     height: 0;
 }
+
 #Lait {
     background-color: white;
     margin-top: 198px;
 }
+
 #Eau {
     background-color: lightblue;
 }
+
 #Chocolat {
-    background-color: rgb(117,86,56);
+    background-color: rgb(117, 86, 56);
 }
+
 #Café {
-    background-color: rgb(47,29,15);
+    background-color: rgb(47, 29, 15);
 }
+
 #Thé {
     background-color: rgb(208, 240, 192);
 }
+
 #Sucre {
     background-color: white;
 }
+
 /* fin gobelet */
 
 /* vue2 */
@@ -244,12 +271,15 @@
     text-align: center;
     vertical-align: middle;
 }
+
 .maintenance img {
 }
+
 #coinsCounter {
     padding: 20px;
     height: 226px;
 }
+
 .compteur {
     height: 100%;
     float: left;
@@ -258,10 +288,12 @@
     margin-right: 0.8%;
     text-align: center;
 }
+
 .compteur img {
     width: 100%;
     margin-bottom: 13px;
 }
+
 .displayCount {
     background-image: url("../img/ecranMonnaie.png");
     background-repeat: no-repeat;
@@ -275,10 +307,12 @@
     top: -68px;
     text-shadow: 0 0 10px red;
 }
+
 #ingredientsCounter {
     padding: 20px;
     height: 395px;
 }
+
 .ingCompteur {
     float: left;
     border-radius: 500px;
@@ -289,6 +323,7 @@
     margin-right: 3.33%;
     text-align: center;
 }
+
 .compteurIngredients {
     border-radius: 500px 500px 0 0;
     height: 85%;
@@ -296,6 +331,7 @@
     border: 1px solid white;
     border-bottom: 0px;
 }
+
 .nomIng {
     position: absolute;
     color: red;
@@ -309,6 +345,7 @@
     padding-left: 10px;
     padding-bottom: 10px;
 }
+
 .formIng {
     height: 14%;
     width: 100%;
@@ -318,30 +355,39 @@
     border: 1px solid white;
     border-top: 0px;
 }
+
 #imgCafe {
     margin-left: 10px;
 }
+
 #cafe > .compteurIngredients, #cafe > .formIng {
-    background: linear-gradient(to right, rgb(47,29,15), rgb(5, 2, 0));
+    background: linear-gradient(to right, rgb(47, 29, 15), rgb(5, 2, 0));
 }
+
 #chocolat > .compteurIngredients, #chocolat > .formIng {
-    background: linear-gradient(to right, rgb(117,86,56), rgb(80,60,35));
+    background: linear-gradient(to right, rgb(117, 86, 56), rgb(80, 60, 35));
 }
+
 #lait > .compteurIngredients, #lait > .formIng {
     background: linear-gradient(to right, rgb(254, 252, 255), rgb(170, 170, 170));
 }
-#the > .compteurIngredients, #the > .formIng{
+
+#the > .compteurIngredients, #the > .formIng {
     background: linear-gradient(to right, rgb(208, 240, 192), rgb(165, 180, 140));
 }
+
 #eau > .compteurIngredients, #eau > .formIng {
     background: linear-gradient(to right, rgb(0, 183, 255), rgb(43, 45, 252));
 }
+
 #sucre > .compteurIngredients, #sucre > .formIng {
-    background: linear-gradient(to right, rgb(200,200,200), rgb(140, 140, 140));
+    background: linear-gradient(to right, rgb(200, 200, 200), rgb(140, 140, 140));
 }
+
 .formIng .buttons {
     position: relative;
     top: -15px;
     left: -4.5px;
 }
+
 /* fin vue 2 */
