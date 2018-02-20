@@ -91,7 +91,7 @@
             </div>
 
             <div id="btnResetMonnaie">
-                <form action="vueClient.php" method="post">
+                <form action="/" method="post">
                     <input class="buttons" type="image" name="reset" src="{{ asset('img/buttons/resetNormal.png') }}"
                            alt="reset" value="true">
                 </form>

@@ -1,17 +1,11 @@
 function moneyCount() {
     let displayer = $('#monnaieUser');
     let total = 0;
-
     for (let i = 0; i < $('.coins').length; i++) {
-
         let alt = $('.coins:eq(' + i + ')').attr('alt');
-
         let multiple = $("input[name='coin[" + alt + "]']").val();
-
-        let howMuch = (alt * multiple)/100;
-
+        let howMuch = (alt * multiple) / 100;
         total += howMuch;
-
         total = Number((total).toFixed(2));
     }
     displayer.html(total + '€');
@@ -27,7 +21,7 @@ $(document).ready(function () {
 
     moneyCount();
     displayDrink();
-    $('.coins input').val(0);
+    // $('.coins').val(0);
 
     $('#btnValider img').click(function () {
         if ($('#chargement').width() == 0) {
@@ -39,11 +33,8 @@ $(document).ready(function () {
         let alt = $(this).attr('alt');
         let selector = $("input[name='coin[" + alt + "]']");
         let val = Number(selector.val()) + 1;
-        console.log(val);
         selector.val(val);
-
         moneyCount();
-
     }).hover(function () {
         $(this).css('box-shadow', '0 0 20px white');
     }, function () {
