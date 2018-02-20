@@ -29,11 +29,24 @@ function displayDrink() {
     $('.price').html(content[1]);
 }
 
+function displaySugar(val) {
+    $('#leds').attr('src', function (i, src) {
+        let oldSrc = src.split(/(\d+)(?!.*\d)/);
+        let newSrc = oldSrc[0] + val + oldSrc[2];
+        return newSrc;
+    });
+}
+
+
 $(document).ready(function () {
 
     moneyCount(0);
     displayDrink();
     jsonification();
+    $('#nbSucres').val(function (i, oldval) {
+        displaySugar(oldval);
+        return oldval;
+    });
 
     $('#btnValider img').click(function () {
         if ($('#chargement').width() == 0) {
@@ -127,19 +140,23 @@ $(document).ready(function () {
     });
 
     $('#sucre-next').click(function () {
-        if ($('#selectSucre option:selected').next().length == 1) {
-            $('#selectSucre option:selected').next().prop('selected', true);
-        } else {
-            $('#selectSucre option:first').prop('selected', true);
-        }
+        $('#nbSucres').val(function (i, oldval) {
+            if (oldval < 5) {
+                oldval++;
+            }
+            displaySugar(oldval);
+            return oldval;
+        });
     });
+
 
     $('#sucre-prev').click(function () {
-        if ($('#selectSucre option:selected').prev().length == 1) {
-            $('#selectSucre option:selected').prev().prop('selected', true);
-        } else {
-            $('#selectSucre option:last').prop('selected', true);
-        }
+        $('#nbSucres').val(function (i, oldval) {
+            if (oldval > 0) {
+                oldval--;
+            }
+            displaySugar(oldval);
+            return oldval;
+        });
     });
-
 });
