@@ -1,5 +1,5 @@
 @extends('template.default_template')
-
+@include('template.navbar')
 @section('titre')
     Gestion des Ingrédients
 @stop

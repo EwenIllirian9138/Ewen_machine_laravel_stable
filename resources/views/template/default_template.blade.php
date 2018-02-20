@@ -13,8 +13,7 @@
         </div>
     </div>
 </header>
-@include('template.navbar')
-
+{{--@include('template.navbar')--}}
 
 <section class="content container">
     {{--<div class="mb-5 mt-5">--}}

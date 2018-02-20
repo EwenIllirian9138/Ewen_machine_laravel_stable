@@ -1,5 +1,5 @@
 html, body {
-    background-color: #fff;
+    background-color: lightgrey;
     color: #636b6f;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
@@ -7,6 +7,7 @@ html, body {
     margin: 0;
     text-align: center;
 }
+
 .flex-row {
     justify-content: center;
 }
@@ -53,7 +54,7 @@ h1 {
     height: 100vh;
 }
 .jumbotron {
-    background-color: #ccc4b1;
+    background-color: lightgrey;
     border-radius: 0%;
     margin-bottom: 0px;
 }

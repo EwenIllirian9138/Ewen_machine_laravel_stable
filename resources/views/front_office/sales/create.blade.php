@@ -1,5 +1,5 @@
 @extends('template.default_template')
-
+@include('template.withoutNavbar')
 @section('titre')
     Préparation des boissons
 @stop
@@ -55,19 +55,12 @@
 
             <div id="affichageChoix" class="text-center">
                 <div>
-                    <?php
-                    if (isset($choix)) {
-                        echo $prepare;
-                        echo "<br/>" . date('d/m/Y H:i:s');
-                    } else {
-                        echo "En attente<br/>" . date('d/m/Y H:i:s');
-                    } ;
-                    ?>
+                    "En attente"</br>
+                    {{date('d/m/Y H:i:s')}}
                 </div>
 
                 <div class="boissons"></div>
                 <div class="price"></div>
-
 
             </div>
 
