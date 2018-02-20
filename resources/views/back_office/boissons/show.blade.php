@@ -1,5 +1,5 @@
 @extends('template.default_template')
-@include('template.navbar')
+
 @section('titre')
     {{--<a href="/boissons" class="fa fa-angle-left fa-lg"></a>--}}
     Details de {{ $boisson->name }}

@@ -13,12 +13,12 @@
         </div>
     </div>
 </header>
-{{--@include('template.navbar')--}}
+@include('template.navbar')
 
 <section class="content container">
-    {{--<div class="mb-5 mt-5">--}}
-    @yield('content')
-    {{--</div>--}}
+    <div class="mb-5 mt-5">
+        @yield('content')
+    </div>
 </section>
 
 <footer class="bg-dark">

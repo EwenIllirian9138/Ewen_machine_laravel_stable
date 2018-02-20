@@ -1,21 +1,10 @@
-@extends('template.default_template')
-@include('template.withoutNavbar')
+@extends('template.withoutNavbar')
+
 @section('titre')
     Préparation des boissons
 @stop
 
 @section('content')
-
-    @if($errors->any())
-        <div class="col-md-8 alert alert-warning alert-dismissible fade show" role="alert">
-            @foreach( $errors->all() as $error)
-                <strong>Attention !</strong> {{ $error }}
-            @endforeach
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
 
     <div id="machine">
         <form id="storeSale" action="/sales" method="post">
@@ -54,11 +43,17 @@
             </div>
 
             <div id="affichageChoix" class="text-center">
-                <div>
-                    "En attente"</br>
-                    {{date('d/m/Y H:i:s')}}
-                </div>
+                <div class="infos">
+                    @if($errors->any())
+                        @foreach( $errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    @else
+                        En attente
+                    @endif
 
+                </div>
+                <i class="fa fa-coffee"></i><br/>
                 <div class="boissons"></div>
                 <div class="price"></div>
 
@@ -88,7 +83,6 @@
                     <input class="buttons" type="image" name="reset" src="{{ asset('img/buttons/resetNormal.png') }}"
                            alt="reset" value="true">
                 </form>
-                {{--<img class="buttons" src="{{ asset('img/buttons/resetNormal.png') }}" alt="reset">--}}
 
             </div>
 
@@ -102,7 +96,7 @@
 
             <div id="afficheurMonnaie">
                 <p class="monnaie" id="monnaieUser">
-                    00.00€
+                    0€
                 </p>
                 <img id="validation" src="{{ asset('img/monnayeur/ecranMonnaie.png') }}" alt="monnaie">
             </div>

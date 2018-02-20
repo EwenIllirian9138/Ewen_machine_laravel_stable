@@ -1,41 +1,57 @@
-<div class="collapse navbar-collapse nav justify-content-end" id="app-navbar-collapse">
-    @guest
-        @if(Request::is("login*"))
-            <li class="nav-item active">
-        @else
-            <li class="nav-item">
-                @endif
-                <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in fa-xs"></i> Login</a></li>
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    @include('template.head_fragment')
+</head>
+<body>
 
-            @if(Request::is("register*"))
-                <li class="nav-item active">
+<div class="top-right">
+
+    <div class="dropdown">
+        <button class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="true">
+            @guest
+                <i class="fa fa-bars fa-xs"></i>
             @else
-                <li class="nav-item">
-                    @endif
-                    <a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li class="nav-item dropdown">
-                        <button class="nav-link btn btn-dark dropdown-toggle" data-toggle="dropdown"
-                                type="button"
-                                aria-expanded="false"
-                                aria-haspopup="true">
-                            <i class="fa fa-user fa-xs"></i> {{ Auth::user()->name }} <span class="caret"></span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="/home"">
-                            <i class="fa fa-home fa-xs"></i> Home</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i
-                                        class="fa fa-sign-out fa-xs"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                <i class="fa fa-user fa-xs"></i> {{ Auth::user()->name }} <span class="caret"></span>
+            @endguest
+        </button>
 
-                        </div>
-                    </li>
-                @endguest
+
+        <ul class="dropdown-menu dropdown-menu-right">
+            @guest
+                <a class="dropdown-item" href="{{ route('login') }}"><i class="fa fa-sign-in fa-xs"></i> Login </a>
+                <a class="dropdown-item" href="{{ route('register') }}"><i class="fa fa-user-plus fa-xs"></i>
+                    Register</a>
+            @else
+
+                <a class="dropdown-item" href="/home"">
+                <i class="fa fa-home fa-xs"></i> Home
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa fa-sign-out fa-xs"></i> Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                      style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            @endguest
+
+
+        </ul>
+    </div>
 </div>
+
+<section class="content container">
+    @yield('content')
+</section>
+
+</body>
+</html>
