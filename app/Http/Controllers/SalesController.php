@@ -57,8 +57,11 @@ class SalesController extends Controller
     public
     function store(CreateSales $request)
     {
+        $coins = json_decode($request['money'], true);
+        krsort($coins, SORT_NUMERIC);
+
         $boisson = Boisson::find(request('id'));
-        $coins = request('coin');
+//        $coins = request('coin');
         $data = [
             'boisson_id' => $boisson->id,
             'user_id' => \Auth::id(),

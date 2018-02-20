@@ -1,14 +1,26 @@
-function moneyCount() {
+let money = {
+    200: 0,
+    100: 0,
+    50: 0,
+    20: 0,
+    10: 0,
+    5: 0,
+}
+
+function moneyCount(alt) {
     let displayer = $('#monnaieUser');
-    let total = 0;
-    for (let i = 0; i < $('.coins').length; i++) {
-        let alt = $('.coins:eq(' + i + ')').attr('alt');
-        let multiple = $("input[name='coin[" + alt + "]']").val();
-        let howMuch = (alt * multiple) / 100;
-        total += howMuch;
-        total = Number((total).toFixed(2));
-    }
+    let total = Number(displayer.html().split('€')[0]);
+    let howMuch = Number((alt / 100).toFixed(2));
+
+    total += howMuch;
+    total = total.toFixed(2);
     displayer.html(total + '€');
+    jsonification();
+}
+
+function jsonification() {
+    let json = JSON.stringify(money);
+    $("input[name='money']").val(json);
 }
 
 function displayDrink() {
@@ -19,9 +31,9 @@ function displayDrink() {
 
 $(document).ready(function () {
 
-    moneyCount();
+    moneyCount(0);
     displayDrink();
-    // $('.coins').val(0);
+    jsonification();
 
     $('#btnValider img').click(function () {
         if ($('#chargement').width() == 0) {
@@ -30,11 +42,11 @@ $(document).ready(function () {
     });
 
     $('.coins').click(function () {
+
         let alt = $(this).attr('alt');
-        let selector = $("input[name='coin[" + alt + "]']");
-        let val = Number(selector.val()) + 1;
-        selector.val(val);
-        moneyCount();
+        money[alt]++;
+        moneyCount(alt);
+
     }).hover(function () {
         $(this).css('box-shadow', '0 0 20px white');
     }, function () {
@@ -82,7 +94,7 @@ $(document).ready(function () {
             $('#Lait').css('margin-top', '198px');
             $('.ingredients').css('background-color', '').fadeTo(0, 1);
         }
-    }).hide();
+    });
 
     $('.buttons').hover(function () {
         $(this).attr('src', $(this).attr('src').split('Normal').join('Hover'));
@@ -96,11 +108,9 @@ $(document).ready(function () {
 
     $('#btnDroite').click(function () {
         if ($('#selectDrink option:selected').next().length == 1) {
-
             $('#selectDrink option:selected').next().prop('selected', true);
             displayDrink();
         } else {
-
             $('#selectDrink option:first').prop('selected', true);
             displayDrink();
         }

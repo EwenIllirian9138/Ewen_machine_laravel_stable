@@ -2,11 +2,10 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     @include('template.head_fragment')
-    <style>
-        body {
-            background-image: url("../img/skulls.png");
-        }
-    </style>
+    <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
+    <style>body {
+            background-image: url("/../img/skulls.png");
+        }</style>
 </head>
 <body>
 <header>

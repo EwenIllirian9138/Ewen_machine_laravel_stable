@@ -24,8 +24,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/vueClient.css') }}">
 
 <script type="text/javascript" src="{{ asset('js/add_form_line.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/prep_select.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/animeGob.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/buttons.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/monnayeur.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/selectDrink.js') }}"></script>

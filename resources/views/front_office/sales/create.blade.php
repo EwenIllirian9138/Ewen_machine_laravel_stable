@@ -15,15 +15,8 @@
                 @endforeach
             </select>
 
-            <input id="sucresNb" class="hidden" name="selectSucre" type="radio" value="" checked="checked">
-
-            <input name="coin[200]" type="hidden" value="0" alt="200">
-            <input name="coin[100]" type="hidden" value="0" alt="100">
-            <input name="coin[50]" type="hidden" value="0" alt="50">
-            <input name="coin[20]" type="hidden" value="0" alt="20">
-            <input name="coin[10]" type="hidden" value="0" alt="10">
-            <input name="coin[5]" type="hidden" value="0" alt="5">
-
+            <input id="sucresNb" class="hidden" name="selectSucre" type="radio" value="0" checked="checked">
+            <input type="hidden" name="money">
             <button id="validerChoix" class="hidden" name="submit" type="submit"></button>
         </form>
 
@@ -71,7 +64,6 @@
 
             <div id="btnMoney" class="porteMonnaie">
                 <img class="porteMonnaie" src="{{ asset('img/buttons/euroNormal.png') }}" alt="euro">
-
             </div>
 
             <div id="fente">
@@ -79,11 +71,7 @@
             </div>
 
             <div id="btnResetMonnaie">
-                <form action="/" method="post">
-                    <input class="buttons" type="image" name="reset" src="{{ asset('img/buttons/resetNormal.png') }}"
-                           alt="reset" value="true">
-                </form>
-
+                <img class="buttons" name="reset" src="{{ asset('img/buttons/resetNormal.png') }}" alt="reset">
             </div>
 
             <div id="retourMonnaie">
@@ -120,7 +108,7 @@
 
         <div id="zoneGob">
 
-            <div id="gobelet">
+            <div id="gobelet" class="hidden">
 
                 <div id="Lait" class="ingredients"></div>
 
