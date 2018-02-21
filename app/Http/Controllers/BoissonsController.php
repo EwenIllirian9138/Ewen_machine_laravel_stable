@@ -47,6 +47,7 @@ class BoissonsController extends Controller
 
         return view('back_office.boissons.index', $data);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -116,7 +117,9 @@ class BoissonsController extends Controller
     public function destroy(Boisson $boisson)
     {
         $boisson->ingredients()->detach();
-        $boisson->users()->dissociate();
+        foreach ($boisson->sales as $sale) {
+            $sale->boisson()->dissociate();
+        }
         $boisson->delete();
         return redirect('/boissons');
     }

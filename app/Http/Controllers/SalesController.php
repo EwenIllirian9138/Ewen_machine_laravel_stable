@@ -61,30 +61,33 @@ class SalesController extends Controller
         krsort($coins, SORT_NUMERIC);
 
         $boisson = Boisson::find(request('id'));
-//        $coins = request('coin');
-        $data = [
-            'boisson_id' => $boisson->id,
-            'user_id' => \Auth::id(),
-            'sugar' => request('selectSucre'),
-        ];
 
         $preparation = new Preparation($boisson, $coins);
 
         if ($preparation->enoughMoney) {
-            if ($preparation->can) {
-                $preparation->store();
+            if ($preparation->canMakeMoney) {
+
+                $data = [
+                    'boisson_id' => $boisson->id,
+                    'user_id' => \Auth::id(),
+                    'sugar' => request('selectSucre'),
+                    'boisson_name' => $boisson->name,
+                    'price' => $boisson->price,
+                    'money_user' => $preparation->userMoney,
+                    'make_money' => $preparation->makeMoney,
+                ];
+
                 Sale::create($data);
-                return redirect('/coins')->with(['coins' => $preparation->renduCoins]);
+                $preparation->store();
+
+
+                return redirect()->back()->with(['coinBack' => $preparation->renduCoins, 'anime' => true]);
             } else {
-                return redirect()->back()->withErrors('Ne pourras pas rendre la monnaie');
+                return redirect()->back()->withErrors('Ne pourra pas rendre la monnaie');
             }
-
         } else {
-
-            return redirect()->back()->withErrors('Monnaie insufisante');
-
+            return redirect()->back()->withErrors('Monnaie insuffisante');
         }
-
     }
 
     /**

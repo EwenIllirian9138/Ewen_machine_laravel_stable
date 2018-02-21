@@ -10,11 +10,12 @@ namespace App\Http\Controllers\App;
 
 
 use App\Coin;
+use Illuminate\Support\Facades\DB;
 
 class Preparation
 {
     public $renduCoins = [];
-    public $userMoney, $drinkPrice, $aRendre, $can, $enoughMoney = null;
+    public $userMoney, $drinkPrice, $aRendre, $canMakeMoney, $enoughMoney, $makeMoney = null;
     protected $stockCoins, $userCoins = [];
     protected $glouton = true;
 
@@ -43,6 +44,15 @@ class Preparation
             $result += ($value * $stock);
         }
         return $result;
+    }
+
+    protected function setupMoney()
+    {
+        $this->aRendre = $this->userMoney - $this->drinkPrice;
+        $this->makeMoney = $this->aRendre;
+        if ($this->aRendre >= 0) {
+            $this->enoughMoney = true;
+        }
     }
 
     protected function glouton()
@@ -84,33 +94,35 @@ class Preparation
                     $this->glouton();
                     $this->stockCoins[$value] = $temp;
                     krsort($this->stockCoins, SORT_NUMERIC);
+                    if ($this->canMakeMoney) {
+                        break;
+                    }
                     $this->stockCoins = $tmpStock;
                     $this->renduCoins = $tmpRendu;
                     $this->aRendre = $tmpARendre;
-                    if ($this->can) {
-                        break;
-                    }
                 }
             }
         } else {
-            $this->can = true;
+            $this->canMakeMoney = true;
         }
     }
 
     public function store()
     {
         $coins = Coin::all();
-        foreach ($coins as $coin) {
-            $coin->stock = $this->stockCoins[$coin->type];
-            $coin->save();
+        $toStock = [];
+        foreach ($this->userCoins as $value => $quantity) {
+            if (isset($this->renduCoins[$value])) {
+                $toStock[$value] = $this->userCoins[$value] - $this->renduCoins[$value];
+            } else {
+                $toStock[$value] = $this->userCoins[$value];
+            }
         }
-    }
-
-    protected function setupMoney()
-    {
-        $this->aRendre = $this->userMoney - $this->drinkPrice;
-        if ($this->aRendre >= 0) {
-            $this->enoughMoney = true;
+        foreach ($coins as $coin) {
+            if ($toStock[$coin->type] != 0) {
+                $coin->increment('stock', $toStock[$coin->type]);
+                $coin->save();
+            }
         }
     }
 }

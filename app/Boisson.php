@@ -14,7 +14,6 @@ class Boisson extends Model
         return $this->hasMany('App\Sale');
     }
 
-
     public function ingredients()
     {
         return $this->belongsToMany('App\Ingredient', 'recipes')

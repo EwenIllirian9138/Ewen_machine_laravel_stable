@@ -12,7 +12,8 @@
 
             <select class="hidden" name="id" id="selectDrink">
                 @foreach($boissons as$boisson)
-                    <option value="{{ $boisson->id }}">{{ $boisson->name }}/{{ $boisson->price/100 . '€' }}</option>
+                    <option value="{{ $boisson->id }}">{{ $boisson->name }}/
+                        {{ number_format($boisson->price/100, 2, '.', '') . '€' }}</option>
                 @endforeach
             </select>
 
@@ -42,10 +43,6 @@
                     @if($errors->any())
                         @foreach( $errors->all() as $error)
                             {{ $error }}
-                        @endforeach
-                    @elseif (session('coinBack'))
-                        @foreach(session('coinBack') as $value => $nombre)
-                            {{ $value }}: {{ $nombre }}
                         @endforeach
                     @else
                         En attente
@@ -81,7 +78,13 @@
             </div>
 
             <div id="retourMonnaie">
-                {{--<img src="{{ asset('img/monnayeur/retourMonnaie.png') }}" alt="monnaie">--}}
+                <div id="afficheurRetour">
+                    @if (session('coinBack'))
+                        @foreach(session('coinBack') as $value => $nombre)
+                            <div class="pieceDisplay">{{ $nombre }}x{{ ($value/100).'€' }}</div>
+                        @endforeach
+                    @endif
+                </div>
             </div>
 
         </div>
@@ -131,7 +134,11 @@
         </div>
 
         <div id="acredit">
-            <a target="_blank" href="https://www.freepik.com/free-photos-vectors/background">Background image created by Kjpargeter - Freepik.com</a>
+            <a target="_blank" href="https://www.freepik.com/free-photos-vectors/background">Background image created by
+                Kjpargeter - Freepik.com</a>
         </div>
     </div>
+    @if(session('anime'))
+        <script>affichageGob()</script>
+    @endif
 @endsection

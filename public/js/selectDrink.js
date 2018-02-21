@@ -105,8 +105,9 @@ function chargement(listIng) {
 }
 
 function affichageGob() {
-	$('#gobelet').fadeIn('slow', remplissageGob());
-	comptageStock(choix.ingredients);
+	$('#gobelet').fadeIn('slow');
+	// $('#gobelet').fadeIn('slow', remplissageGob());
+	// comptageStock(choix.ingredients);
 }
 
 function comptageStock(tabIng) {
