@@ -14,9 +14,9 @@ class CreateCoinsTable extends Migration
     public function up()
     {
         Schema::create('coins', function (Blueprint $table) {
-            $table->increments('id')->unsigned;
+            $table->increments('id')->unsigned();
             $table->enum('type', ['200', '100', '50', '20', '10', '5']);
-            $table->integer('stock')->unsigned;
+            $table->integer('stock')->unsigned()->default(100);
         });
     }
 

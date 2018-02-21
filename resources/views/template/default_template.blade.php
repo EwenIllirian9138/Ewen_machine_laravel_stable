@@ -19,10 +19,8 @@
 </header>
 @include('template.navbar')
 
-<section class="back_section content container">
-    <div class="mb-5 mt-5">
+<section class="back_section mb-5 mt-5 content container">
         @yield('content')
-    </div>
 </section>
 
 <footer class="bg-dark">

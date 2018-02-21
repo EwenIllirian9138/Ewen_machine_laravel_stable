@@ -28,6 +28,10 @@ class CreateSalesTable extends Migration
                 ->nullable()
                 ->default(null);
             $table->integer('sugar')->unsigned();
+            $table->string('boisson_name', 250)->nullable($value = true);
+            $table->integer('price')->unsigned();
+            $table->integer('money_user');
+            $table->integer('make_money');
             $table->timestamps();
         });
     }

@@ -38,9 +38,14 @@
 
             <div id="affichageChoix" class="text-center">
                 <div class="infos">
+
                     @if($errors->any())
                         @foreach( $errors->all() as $error)
                             {{ $error }}
+                        @endforeach
+                    @elseif (session('coinBack'))
+                        @foreach(session('coinBack') as $value => $nombre)
+                            {{ $value }}: {{ $nombre }}
                         @endforeach
                     @else
                         En attente
@@ -76,7 +81,7 @@
             </div>
 
             <div id="retourMonnaie">
-                <img src="{{ asset('img/monnayeur/retourMonnaie.png') }}" alt="monnaie">
+                {{--<img src="{{ asset('img/monnayeur/retourMonnaie.png') }}" alt="monnaie">--}}
             </div>
 
         </div>
@@ -123,6 +128,10 @@
 
                 <div id="Sucre" class="ingredients"></div>
             </div>
+        </div>
+
+        <div id="acredit">
+            <a target="_blank" href="https://www.freepik.com/free-photos-vectors/background">Background image created by Kjpargeter - Freepik.com</a>
         </div>
     </div>
 @endsection

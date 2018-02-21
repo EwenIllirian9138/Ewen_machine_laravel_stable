@@ -214,7 +214,7 @@
 /* Gobelet */
 #zoneGob, #remplissage {
     width: 70%;
-    height: 403px;
+    height: 348px;
     float: left;
 }
 
@@ -261,6 +261,14 @@
 }
 
 /* fin gobelet */
+
+
+/* pied */
+#acredit {
+    float: left;
+    width: 100%;
+}
+/* fin pied */
 
 /* vue2 */
 .maintenance {
