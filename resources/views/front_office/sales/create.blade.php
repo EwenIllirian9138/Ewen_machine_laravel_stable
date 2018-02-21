@@ -9,13 +9,14 @@
     <div id="machine">
         <form id="storeSale" action="/sales" method="post">
             {{ csrf_field() }}
+
             <select class="hidden" name="id" id="selectDrink">
                 @foreach($boissons as$boisson)
                     <option value="{{ $boisson->id }}">{{ $boisson->name }}/{{ $boisson->price/100 . '€' }}</option>
                 @endforeach
             </select>
 
-            <input id="sucresNb" class="hidden" name="selectSucre" type="radio" value="0" checked="checked">
+            <input class="hidden" id="nbSucres" name="selectSucre" type="number" value="3">
             <input type="hidden" name="money">
             <button id="validerChoix" class="hidden" name="submit" type="submit"></button>
         </form>
@@ -94,14 +95,14 @@
         </div>
 
         <div id="zoneSucre">
-            <div id="btnPlus">
+            <div id="sucre-next">
                 <img class="buttons" src="{{ asset('img/buttons/plusNormal.png') }}" alt="plus">
             </div>
 
             <div id="ledSucres">
-                <img id="leds" src="{{ asset('img/led5sucres.png') }}" alt="ledSucre">
+                <img id="leds" src="{{ asset('img/led0sucres.png') }}" alt="ledSucre">
             </div>
-            <div id="btnMoins">
+            <div id="sucre-prev">
                 <img class="buttons" src="{{ asset('img/buttons/moinsNormal.png') }}" alt="moins">
             </div>
         </div>
