@@ -121,9 +121,9 @@
     margin-top: -2px;
     padding-top: 3px;
     font-size: 2em;
-    color: red;
+    color: blue;
     width: 154px;
-    text-shadow: 0px 0px 10px red;
+    text-shadow: 0px 0px 10px blue;
 }
 
 #btnResetMonnaie {
@@ -151,8 +151,8 @@
 #affichageRendu {
     position: relative;
     text-align: center;
-    color: red;
-    text-shadow: 0px 0px 10px red;
+    color: blue;
+    text-shadow: 0px 0px 10px blue;
     top: -134px;
     width: 75%;
     font-size: 1.5em;
